@@ -1,0 +1,190 @@
+body {
+    padding: 0;
+    margin: 0;
+    margin-right: 5%;
+    margin-left: 5%;
+
+    font-family: 'Montserrat-Italic', sans-serif;
+}
+
+.clearfix {
+    content: '';
+    display: table;
+    width: 100%;
+    clear: both;
+}
+
+.inner {
+    width: 96%;
+    padding-left: 3%;
+    padding-right: 10%;
+    padding-bottom: 25px;
+
+    background: rgba(47, 8, 8, 0.1);
+}
+
+header {
+    width: 100%;
+    clear: both;
+
+    background: #2f0808;
+}
+
+.inner {
+    display: table;
+    clear: both;
+}
+
+.logo {
+    width: 150px;
+    height: 80px;
+    padding: 10px;
+
+    float: left;
+}
+
+
+nav {
+    margin-top: 10px;
+    padding: 18px;
+    padding-right: 30px;
+
+    float: right;
+    display: block;
+}
+
+.item_nav {
+    margin: 10px;
+    font-size: 18px;
+    font-weight: bolder;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    -webkit-text-stroke-width: 0.3px;
+    -webkit-text-stroke-color: black;
+}
+
+.item_nav:hover {
+    color: #fef7a9;
+}
+
+.icon_header_menu {
+    width: 25px;
+    height: 25px;
+}
+
+/*
+	Нижнее меню
+	*/
+footer {
+    margin: 0;
+    margin-top: 30px;
+    height: 209px;
+    background: #300808;
+
+    text-align: center;
+    color: white;
+}
+
+.footer_menu {
+    padding-top: 40px;
+    padding-bottom: 25px;
+}
+
+.footer_menu_item {
+    margin: 10px;
+
+    text-decoration: none;
+    color: white;
+    font-size: 19px;
+}
+
+.footer_title {
+    padding-bottom: 40px;
+}
+
+.footer_title h4 {
+    margin: 4px;
+
+    font-weight: lighter;
+}
+
+/* 
+Содержимое страницы
+*/
+
+.container {
+    width: 100%;
+
+    display: table;
+}
+
+/*подменю */
+.submenu {
+    margin: 10px;
+    padding: 20px;
+    padding-top: 60px;
+    float: left;
+}
+
+.title_submenu {
+    margin: 0 auto;
+    color: #a30f2c;
+}
+
+.subparagraph_submenu {
+    margin: 5px;
+    color: #2f0808;
+
+}
+
+
+/*продукция */
+.content {
+    margin: 10px;
+    padding: 40px;
+    float: right;
+}
+
+.title_content {
+    color: #a30f2c;
+}
+
+.iamge_size {
+    width: 400px;
+    height: 290px;
+}
+
+.row {
+    margin: 10px;
+    display: table-row;
+}
+
+.item_cake {
+
+    display: table-cell;
+}
+
+.content_item_cake {
+    margin: 20px;
+    padding: 20px;
+    padding-bottom: 80px;
+    border: solid 10px #e6e6e6;
+
+}
+
+.name_cake {
+    padding-left: 8px;
+    display: table;
+}
+
+.price {
+    padding-left: 40px;
+    float: left;
+}
+
+.weight {
+    padding-right: 40px;
+    float: right;
+}
+
