@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @WebServlet("/AuthorizationServlet")
 public class AuthorizationServlet extends HttpServlet {
@@ -29,10 +30,15 @@ public class AuthorizationServlet extends HttpServlet {
         user.setPasswordUser(passwordForm);
 
         UserTable userTable = new UserTable();
-        if (userTable.searchUserInTable(user))
+        if (userTable.searchUserInTable(user)) {
             System.out.println("Пользователь успешно авторизован");
-        else
-            System.out.println("Неверный логин или пароль");
+            req.setAttribute("email", emailForm);
+            req.setAttribute("password", passwordForm);
 
+            req.getRequestDispatcher("/jsp/Authorization.jsp").forward(req, resp);
+        }
+        else {
+            req.getRequestDispatcher("/authorization.html").forward(req, resp);
+        }
     }
 }

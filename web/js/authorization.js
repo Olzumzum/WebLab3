@@ -19,38 +19,9 @@ function valid(form) {
     var userPassword = object["password"];
 
     /* Здесь проверяем полученные данные */
-    /*  if (email != userEmail || password != userPassword) {
+     // if (email != userEmail || password != userPassword) {
           console.log("negative");
           $("#dialog").dialog("open");
-      } else {
-          console.log("positive");
-          document.location.href = url;
-      }*/
+     // }
 };
 
-/**
- * Получение данных с сервера
- */
-function getData() {
-    /**
-     * JSon надо буде как-то получать с сервера
-     * @type {{password: string, email: string}}
-     */
-    let user = '{' +
-        '"email": "user@mail.ru",' +
-        ' "password": "2"' +
-        '}';
-
-    /*Возможо, вот так в будущем будем получать данные */
-    /*  var requestUrl = "https://";
-      var request = new XMLHttpRequest();
-      request.open('GET', requestUrl);
-      request.responseType = 'json';
-      request.send();
-
-      request.onload = function () {
-          var users = request.response;
-
-      }*/
-    return user;
-}

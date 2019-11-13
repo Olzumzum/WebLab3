@@ -24,6 +24,8 @@ public class UserTable implements WorkUserTable {
 
                 /** если введенный эмаил и пароль соответствуют пользователю из базы*/
                 if ((dbEmail.equals(user.getEmailUser())) && (dbPassword.equals(user.getPasswordUser()))) {
+                    connection.close();
+                    db.closeConnection();
                     return true;
                 }
             }
