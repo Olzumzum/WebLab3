@@ -19,18 +19,15 @@ public class DbConnection {
 
     /**Url для соединения с бд */
     private String connectionUrl = "jdbc:mysql://" + DB_HOST + ":" + DB_PORT + "/" + DB_NAME;
-    Connection connection;
+    private Connection connection;
 
     /**
      * Establishing a connection to the database
      */
     public Connection connect(){
         try {
-
             Class.forName(JDBC_DRIVER);
-
-            Connection connection = DriverManager.getConnection(connectionUrl, DATABASE_USER_NAME, DATABASE_USER_PASSWORD);
-            //statement = connection.createStatement();
+            connection = DriverManager.getConnection(connectionUrl, DATABASE_USER_NAME, DATABASE_USER_PASSWORD);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
             System.out.println("Проблемы с подключением к базе данных");

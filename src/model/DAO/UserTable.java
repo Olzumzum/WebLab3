@@ -23,7 +23,7 @@ public class UserTable implements WorkUserTable {
                 String dbPassword = resultSet.getString("password_user");
 
                 /** если введенный эмаил и пароль соответствуют пользователю из базы*/
-                if ((user.getEmailUser() == dbEmail) && (user.getPasswordUser() == dbPassword)) {
+                if ((dbEmail.equals(user.getEmailUser())) && (dbPassword.equals(user.getPasswordUser()))) {
                     return true;
                 }
             }
