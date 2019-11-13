@@ -27,5 +27,6 @@
     <orderEntry type="library" name="servlet-api" level="project" />
     <orderEntry type="library" name="jquery-3.4.1" level="application" />
     <orderEntry type="library" name="jquery-ui" level="application" />
+    <orderEntry type="library" name="mysql-connector-java-5.1.48-bin" level="project" />
   </component>
 </module>

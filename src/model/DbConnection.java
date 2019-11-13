@@ -10,24 +10,33 @@ public class DbConnection {
     private final String LOG_TAG = "Log_DataBase";
 
     /** DataBase details */
+    private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+    private static String DB_HOST = "localhost";
+    private static String DB_PORT = "3306";
+    private static String DB_NAME = "laba2";
     private final static String DATABASE_USER_NAME = "root";
     private final static String DATABASE_USER_PASSWORD = "2";
-    private final static String DATABASE_CONNECTION_URL = "jdbc:mysql://localhost:3306/laba2";
 
-    private Connection connection = null;
+    /**Url для соединения с бд */
+    private String connectionUrl = "jdbc:mysql://" + DB_HOST + ":" + DB_PORT + "/" + DB_NAME;
+    Connection connection;
 
     /**
      * Establishing a connection to the database
      */
     public Connection connect(){
         try {
-            this.connection = DriverManager.getConnection(DATABASE_CONNECTION_URL, DATABASE_USER_NAME, DATABASE_USER_PASSWORD);
+
+            Class.forName(JDBC_DRIVER);
+
+            Connection connection = DriverManager.getConnection(connectionUrl, DATABASE_USER_NAME, DATABASE_USER_PASSWORD);
             //statement = connection.createStatement();
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
+            System.out.println("Проблемы с подключением к базе данных");
         }
 
-        return this.connection;
+        return connection;
     }
 
     /**

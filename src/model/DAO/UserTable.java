@@ -1,4 +1,4 @@
-package model.workTables;
+package model.DAO;
 
 import model.DbConnection;
 import model.User;

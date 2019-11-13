@@ -13,19 +13,19 @@ function valid(form) {
     password = form.password.value;
 
     /**Получение данных с сервера */
-    const json = getData();
+   /* const json = getData();
     const object = JSON.parse(json);
     var userEmail = object["email"];
     var userPassword = object["password"];
 
     /* Здесь проверяем полученные данные */
-      if (email != userEmail || password != userPassword) {
+    /*  if (email != userEmail || password != userPassword) {
           console.log("negative");
           $("#dialog").dialog("open");
       } else {
           console.log("positive");
           document.location.href = url;
-      }
+      }*/
 };
 
 /**
