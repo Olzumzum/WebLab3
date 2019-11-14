@@ -45,10 +45,13 @@ public class UserTable implements WorkUserTable {
         DbConnection db = new DbConnection();
         Connection connection = db.connect();
 
+        String email = user.getEmailUser();
+        String password = user.getPasswordUser();
+
         try {
             Statement statement = connection.createStatement();
-            statement.executeUpdate("insert into Users (email_user) values(" + user.getEmailUser() + ") ," +
-                    " (password_user) values (" + user.getPasswordUser() + ")");
+            statement.executeUpdate("insert into Users(email_user, password_user) " +
+                    "value ('"+ email + "', '" + password + "');");
 
             connection.close();
             db.closeConnection();

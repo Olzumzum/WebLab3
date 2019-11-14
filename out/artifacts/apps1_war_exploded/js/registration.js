@@ -4,7 +4,7 @@
  */
 function registration(form) {
     /**адрес для перехода по ссылке в случае успешного завершения действия */
-    const url = "http://site1/sheets/authorization.html";
+    const url = "/authorization.html";
 
     /** Объявление полей */
     var userEmail = form.email.value;

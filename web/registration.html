@@ -20,7 +20,7 @@
 </head>
 <body>
 
-<form id="form" class="container" action="" method="post" name="autoriz">
+<form id="form" class="container" action="RegistrationServlet" method="post" name="autoriz">
 
     <h1 class="title_enter">Регистация</h1>
     <h3 class="subtitle">e-mail</h3>
@@ -44,7 +44,8 @@
             <input id="userSummAB" type="text" name="captcha" value size="8" class="field_captcha input_field">
         </div>
     </div>
-    <input type="button" name="button" class="btnSend" value="Зарегистрироваться"
+
+    <input type="submit" name="button" class="btnSend" value="Зарегистрироваться"
            onclick="registration(document.getElementById('form'))">
 
 </form>
