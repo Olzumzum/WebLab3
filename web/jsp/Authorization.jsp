@@ -11,8 +11,27 @@
     <title>Добро пожаловать</title>
 </head>
 <body>
-    <p> Email: <%= request.getParameter("email") %></p>
-    <p> Password: <%= request.getParameter("password") %></p>
+<jsp:include page="../menu.html" flush="true"/>
+
+<section class="information_persan">
+    <h1> Добро пожаловать !</h1>
+    <!-- Заполнение JSP bean -->
+    <jsp:useBean id="user" class="model.User" scope="session"/>
+    <%
+        String emailUser = request.getParameter("email");
+        String passwordUser = request.getParameter("password");
+    %>
+    <jsp:setProperty name="user" property="emailUser" value="<%= emailUser%>"/>
+    <jsp:setProperty name="user" property="passwordUser" value="<%= passwordUser%>"/>
+
+    <!-- Вывод данных пользователя -->
+    <h3> Ваш email: </h3>
+    <jsp:getProperty name="user" property="emailUser"/>
+</section>
+
+<div class="shopping_list">
+
+</div>
 
 </body>
 </html>

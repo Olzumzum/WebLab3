@@ -3,7 +3,7 @@
  **/
 function valid(form) {
     /**адрес для перехода по ссылке в случае успешного завершения действия */
-    const url = "../sheets/persanal_area.html";
+    const url = "../sheets/shopping_basket.html";
 
     /** Объявление переменных, присвоение значений,
      * полученных из формы*/
