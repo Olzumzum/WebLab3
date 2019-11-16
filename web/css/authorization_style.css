@@ -62,17 +62,17 @@ body {
 
 /* login transition form */
 .alternative {
-    width: 400px;
-    padding-left: 35%;
-    padding-right:32%;
-    display: block;
+
+    padding-left: 30%;
+    padding-right:30%;
+    display: table;
 
     clear: both;
 }
 
 .return_text {
-    margin: 0;
-    margin-left: 70px;
+    margin: 10px;
+    margin-left: 80px;
     padding: 0;
     float: left;
 
@@ -81,7 +81,7 @@ body {
 }
 
 .return_href {
-    margin: 0;
+    margin: 10px;
     padding: 0;
 
     float: right;
