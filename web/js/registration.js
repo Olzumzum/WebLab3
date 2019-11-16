@@ -13,34 +13,40 @@ function registration(form) {
 
     console.log("email: " + userEmail + ", password: " + userPassword + ", repeat_password: " + userRepeatPassword);
 
-    /** проверка совпадения паролей */
-    if (userPassword != userRepeatPassword) {
-        $('#dialog').dialog("open");
-    } else {
+    /** Получаем введенную сумму и вычисленую */
+    var checkSummAB = document.getElementById('md5').value;
+    var userSummAB = document.getElementById('userSummAB').value;
 
-        /** Проверить введенную капчу */
-        /** Получаем введенную сумму и вычисленую */
-        var checkSummAB = document.getElementById('md5').value;
-        var userSummAB = document.getElementById('userSummAB').value;
 
-        /** Проверяем на равенство */
-        if (!checkCaptcha(checkSummAB, userSummAB)) {
-            /** Если сумма не совпала */
-            $('#capcha_dialog').dialog("open");
-        }
-        /** Если сумма введена правильно */
-        else {
-            /** Отправляем данные пользователя на сервер */
-            var dataUser = JSON.stringify([userEmail, userPassword]);
-            sendData(dataUser);
+    if (userEmail.length != 0 && userPassword.length != 0 && userRepeatPassword.length != 0 && userSummAB.length != 0) {
 
-            /** Выводим сообщение о успешной регистрации и переходим к странице авторизации */
-            $('#succsess_dialog').dialog({
-                beforeClose: function () {
-                    document.location.href = url;
-                }
-            });
-            $('#succsess_dialog').dialog("open");
+        /** проверка совпадения паролей */
+        if (userPassword != userRepeatPassword) {
+            $('#dialog').dialog("open");
+        } else {
+
+            /** Проверить введенную капчу */
+
+            /** Проверяем на равенство */
+            if (!checkCaptcha(checkSummAB, userSummAB)) {
+                /** Если сумма не совпала */
+                $('#capcha_dialog').dialog("open");
+            }
+
+            /** Если сумма введена правильно */
+            else {
+                /** Отправляем данные пользователя на сервер */
+                var dataUser = JSON.stringify([userEmail, userPassword]);
+                sendData(dataUser);
+
+                /** Выводим сообщение о успешной регистрации и переходим к странице авторизации */
+                $('#succsess_dialog').dialog({
+                    beforeClose: function () {
+                        document.location.href = url;
+                    }
+                });
+                $('#succsess_dialog').dialog("open");
+            }
         }
     }
 }
@@ -49,5 +55,4 @@ function registration(form) {
  * Отправка данных на сервер
  */
 function sendData(user) {
-
 }
