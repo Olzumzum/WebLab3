@@ -2,7 +2,7 @@ package controller;
 
 import model.DAO.UserTable;
 import model.DAO.WorkUserTable;
-import model.User;
+import model.entities.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

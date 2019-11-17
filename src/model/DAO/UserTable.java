@@ -1,7 +1,7 @@
 package model.DAO;
 
 import model.DbConnection;
-import model.User;
+import model.entities.User;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

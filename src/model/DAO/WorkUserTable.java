@@ -1,6 +1,6 @@
 package model.DAO;
 
-import model.User;
+import model.entities.User;
 
 public interface WorkUserTable {
     /**
