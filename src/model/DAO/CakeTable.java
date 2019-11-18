@@ -10,53 +10,30 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CakeTable implements WorkProductTable {
+public class CakeTable extends ProductTable {
 
-    /**
-     * Название таблицы к кооторой идет обращение
-     */
-    final static String NAME_TABLE = "Cake";
-    /**
-     * Списко продукции, который будет отображен
-     */
-    private List<ItemProduct> mListProducts = null;
+    public List getTableCake() {
 
-    @Override
-    public List getTable() {
         /** Соединение с БД */
         DbConnection db = new DbConnection();
         Connection connection = db.connect();
 
-        /** инициализация списка */
-        mListProducts = new ArrayList<>();
-
-        /**Запрос */
+        Statement statement = null;
+        ResultSet result = null;
         try {
-            Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("select product_name, assortment_cake_name, product_description, product_image, weight, price  " +
-                    "from " + NAME_TABLE + " \n" +
+            statement = connection.createStatement();
+
+            result = statement.executeQuery("select product_name, assortment_cake_name, product_description, " +
+                    "product_image, weight, price  " +
+                    "from Cake \n" +
                     "INNER JOIN AssortmentCake AC on Cake.assortment_cake_id = AC.assortment_cake_id\n" +
                     "JOIN ItemProduct IP on Cake.item_product_id = IP.item_product_id");
 
-            while (result.next()) {
-                ItemProduct itemProduct = new ItemProduct();
-                itemProduct.setmProductName(result.getString("product_name"));
-                itemProduct.setmProductDescription(result.getString("product_description"));
-                itemProduct.setmProductImage(new byte[]{result.getByte("product_image")});
-                itemProduct.setmWeight(result.getInt("weight"));
-                itemProduct.setmPrice(result.getInt("price"));
-
-                mListProducts.add(itemProduct);
-            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return mListProducts;
+        return getTable(result);
     }
 
-    @Override
-    public void searchAssortment(String nameAssortment) {
-
-    }
 }

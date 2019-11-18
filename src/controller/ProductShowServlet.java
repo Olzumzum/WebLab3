@@ -25,6 +25,7 @@ public class ProductShowServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         CakeTable cakeTable = new CakeTable();
-        mCakeList = cakeTable.getTable();
+        mCakeList = cakeTable.getTableCake();
+        req.setAttribute("listCake", mCakeList);
     }
 }
