@@ -11,7 +11,7 @@
     <title>Добро пожаловать</title>
 </head>
 <body>
-<jsp:include page="../menu.html" flush="true"/>
+<jsp:include page="../mainMenu.html" flush="true"/>
 
 <section class="information_persan">
     <h1> Добро пожаловать !</h1>

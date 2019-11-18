@@ -30,6 +30,7 @@ public class CakeTable implements WorkProductTable {
                 itemProduct.setmProductImage(new byte[]{result.getByte("product_image")});
                 itemProduct.setmWeight(result.getInt("weight"));
                 itemProduct.setmPrice(result.getInt("price"));
+
             }
         } catch (SQLException e) {
             e.printStackTrace();
