@@ -1,6 +1,8 @@
 package model.DAO;
 
+import java.util.List;
+
 public interface WorkProductTable {
-    void showTable();
+    List getTable();
     void searchAssortment(String nameAssortment);
 }
