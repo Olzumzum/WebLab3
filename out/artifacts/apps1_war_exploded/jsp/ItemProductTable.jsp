@@ -27,7 +27,6 @@
             <c:out value="${item.mProductDescription}"/>
             <c:out value="${item.mWeight}"/>
             <c:out value="${item.mPrice}"/>
-
             </div>
         </c:forEach>
 
