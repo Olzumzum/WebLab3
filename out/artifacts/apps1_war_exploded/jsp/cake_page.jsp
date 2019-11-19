@@ -24,7 +24,8 @@
 <div class="container">
     <!--Подменю -->
     <div class="submenu">
-        <h2 class="title_submenu">Ассортимент</h2>
+        <jsp:include page="Assortment.jsp" />
+       <!-- <h2 class="title_submenu">Ассортимент</h2>
         <ul>
             <li class="
 				subparagraph_submenu">Донаты
@@ -44,7 +45,7 @@
             <li class="
 			subparagraph_submenu">Эклеры
             </li>
-        </ul>
+        </ul> -->
     </div>
 
     <!-- Ассортимент -->

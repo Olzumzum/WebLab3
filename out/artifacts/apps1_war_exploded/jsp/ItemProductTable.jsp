@@ -17,8 +17,6 @@
     <tr class="item_cake">
         <td class="content_item_cake">
             <table>
-                <% List<ItemProduct> listCake = (ArrayList<ItemProduct>) request.getAttribute("listCake");
-                %>
 
 
                 <c:forEach var="item" items="${requestScope.listCake}" varStatus="status">

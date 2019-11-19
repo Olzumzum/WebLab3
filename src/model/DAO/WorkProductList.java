@@ -2,7 +2,7 @@ package model.DAO;
 
 import java.util.List;
 
-public interface WorkProductTable {
-    List getTable();
+public interface WorkProductList {
+    List getList();
     void searchAssortment(String nameAssortment);
 }
