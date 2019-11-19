@@ -1,6 +1,7 @@
 package model.DAO;
 
 import model.DbConnection;
+import model.entities.ItemProduct;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

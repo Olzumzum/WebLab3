@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="model.entities.ItemProduct" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
@@ -15,31 +16,20 @@
 </head>
 <body>
 
-<%
-    CakeList cakeList = new CakeList();
-%>
+
 <table>
     <tr class="item_cake">
-        <td class="content_item_cake">
-            <table>
-                <tr>
-                    <td>
-                        c:out value
-                    </td>
-                </tr>
-                <tr>
-                    <td> CakeImage</td>
-                </tr>
-                <tr>
-                    <td> CakeDescription</td>
-                </tr>
-                <tr>
-                    <td> CakeWeight</td>
-                    <td> CakePrice</td>
-                </tr>
+        <c:forEach items="${listCake}" var="item">
 
-            </table>
-        </td>
+            <div class="content_item_cake">
+            <c:out value="${item.mProductName}"/>
+            <c:out value="${item.mProductImage}"/>
+            <c:out value="${item.mProductDescription}"/>
+            <c:out value="${item.mWeight}"/>
+            <c:out value="${item.mPrice}"/>
+            </div>
+        </c:forEach>
+
     </tr>
 
 </table>
