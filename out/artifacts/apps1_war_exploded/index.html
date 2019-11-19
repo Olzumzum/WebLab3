@@ -2,11 +2,20 @@
 <html lang="ru">
 <head>
     <meta charset="utf-8">
+    <!-- connect JQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <!-- connect JQuery ui -->
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet"
+          type="text/css"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/tipe_of_the_day.css">
     <link rel="stylesheet" href="css/navigation_style.css">
     <link rel="stylesheet" href="css/footer_menu.css">
+    <script type="text/javascript" src="js/loaderMenu.js"></script>
     <title> Tasty House </title>
 
 </head>
@@ -24,7 +33,7 @@
                     <a href="index.html" class="item_nav">Главная</a>
                 </li>
                 <li>
-                    <a href="cake_page.html" class="item_nav">Торты и пирожные</a>
+                    <a href="jsp/cake_page.jsp" class="item_nav">Торты и пирожные</a>
 
                     <ul class="submenu">
                         <li>
@@ -159,7 +168,7 @@
 <section>
     <div class="container">
         <div class="btn_menu">
-            <a href="cake_page.html" class="btn_menu_item">
+            <a href="jsp/cake_page.jsp" class="btn_menu_item">
                 <img src="images/icon/icon_cake.png" class="image_item">
                 <h3>Торты и пирожные</h3>
             </a>
@@ -182,22 +191,8 @@
     </div>
 </section>
 
-<!--Footer -->
-<footer>
-    <div class="container">
-        <div class="footer_menu">
-            <a href="index.html" class="footer_menu_item">Главная</a>
-            <a href="#" class="footer_menu_item">Отзывы</a>
-            <a href="#" class="footer_menu_item">О проекте</a>
-            <a href="#" class="footer_menu_item">Наши контакты</a>
-        </div>
-        <div class="footer_title">
-            <h4> ИП Евдокимова_Вохмин ИНН 771400635515</h4>
-            <h4>Политика в отношении персональных данных</h4>
-            <h4>+7 (926) 869 39 05....info@tastyhouse.ru</h4>
-        </div>
-    </div>
-</footer>
+<!-- Контейнер для нижнего меню -->
+<div id="footerMenu"></div>
 </body>
 
 <script src="js/tipeOfTheDay.js"></script>
