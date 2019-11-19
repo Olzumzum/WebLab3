@@ -1,6 +1,6 @@
 package controller;
 
-import model.DAO.CakeTable;
+import model.DAO.CakeList;
 import model.entities.ItemProduct;
 
 import javax.servlet.ServletException;
@@ -24,7 +24,7 @@ public class ProductShowServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        CakeTable cakeTable = new CakeTable();
+        CakeList cakeTable = new CakeList();
         mCakeList = cakeTable.getTableCake();
         req.setAttribute("listCake", mCakeList);
     }

@@ -13,7 +13,7 @@ import java.util.List;
 /** 
  * Класс общей логики для таблицый продукции 
  */
-abstract class ProductTable {
+abstract class ProductList {
 
     /** вернуть таблицу по запросу*/
     List getTable(ResultSet resultSet){

@@ -47,14 +47,15 @@
         </ul>
     </div>
 
-	<!-- Ассортимент -->
+    <!-- Ассортимент -->
     <div class="content">
         <h2 class="title_content">Торты и пирожные</h2>
-        <jsp:include page="/ProductShowServlet" />
-</div>
+        <jsp:include page="/ProductShowServlet"/>
+        <jsp:include page="ItemProductTable.jsp" />
+    </div>
 
-<!-- Контейнер для нижнего меню -->
-<div id="footerMenu"></div>
+    <!-- Контейнер для нижнего меню -->
+    <div id="footerMenu"></div>
 
 </body>
 </html>
