@@ -1,4 +1,4 @@
-/* Menu */
+/* Главное меню на странице index */
 nav {
     margin-top: 10px;
     padding: 30px;
@@ -20,8 +20,6 @@ nav {
      text-transform: uppercase;
      -webkit-text-stroke-width: 0.3px;
      -webkit-text-stroke-color: black;
-
-
 }
 
 .item_nav:hover {

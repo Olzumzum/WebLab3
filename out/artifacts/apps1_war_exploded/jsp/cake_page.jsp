@@ -10,7 +10,7 @@
           type="text/css"/>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="../css/page_style.css">
+
     <link rel="stylesheet" href="../css/fonts.css">
     <script type="text/javascript" src="../js/loaderMenu.js"></script>
     <title> Tasty House </title>
