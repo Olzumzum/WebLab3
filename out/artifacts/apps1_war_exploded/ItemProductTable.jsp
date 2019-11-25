@@ -12,7 +12,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="../css/page_style.css">
+    <link rel="stylesheet" type="text/css" href="css/page_style.css">
     <title>Title</title>
 </head>
 <body>
@@ -31,7 +31,6 @@
             </c:if>
             <div class="item_cake">
                 <div class="content_item_cake">
-                    <c:out value="${item.mProductImage}"/>
                     <h3 class="name_cake">
                         <c:out value="${item.mProductName}"/>
                     </h3>
@@ -39,10 +38,10 @@
                         <c:out value="${item.mProductDescription}"/>
                     </h4>
                     <h4 class="price">
-                        <c:out value="${item.mWeight}"/>
+                        <c:out value="${item.mWeight}"/> гр.
                     </h4>
                     <h4 class="weight">
-                        <c:out value="${item.mPrice}"/>
+                        <c:out value="${item.mPrice}"/> руб.
                     </h4>
                 </div>
             </div>

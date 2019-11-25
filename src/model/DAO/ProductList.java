@@ -36,9 +36,14 @@ abstract class ProductList {
 
                 mListProducts.add(itemProduct);
             }
+
+            connection.close();
+            db.closeConnection();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+
         return mListProducts;
     }
 }

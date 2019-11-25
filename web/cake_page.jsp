@@ -1,3 +1,7 @@
+<!--
+Страница продукции пирожных и тортов
+-->
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="ru">
 <head>
@@ -10,12 +14,16 @@
           type="text/css"/>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 
-
-    <link rel="stylesheet" href="../css/fonts.css">
-    <script type="text/javascript" src="../js/loaderMenu.js"></script>
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/main_menu.css">
+    <script type="text/javascript" src="js/loaderMenu.js"></script>
     <title> Tasty House </title>
 </head>
 <body>
+<div id="mainMenu"></div>
+
+<!-- Загрузка данных о продукции из БД -->
+<jsp:include page="/ProductShowServlet"/>
 
 <!-- Контейнер для главного меню -->
 <div id="mailMenu"></div>
@@ -25,35 +33,15 @@
     <!--Подменю -->
     <div class="submenu">
         <jsp:include page="Assortment.jsp" />
-       <!-- <h2 class="title_submenu">Ассортимент</h2>
-        <ul>
-            <li class="
-				subparagraph_submenu">Донаты
-            </li>
-            <li class="
-			subparagraph_submenu">Макаруны
-            </li>
-            <li class="
-			subparagraph_submenu">Пирожные
-            </li>
-            <li class="
-			subparagraph_submenu">Торты
-            </li>
-            <li class="
-			subparagraph_submenu">Чизкейки
-            </li>
-            <li class="
-			subparagraph_submenu">Эклеры
-            </li>
-        </ul> -->
     </div>
 
     <!-- Ассортимент -->
     <div class="content">
         <h2 class="title_content">Торты и пирожные</h2>
-        <jsp:include page="/ProductShowServlet"/>
+
         <jsp:include page="ItemProductTable.jsp" />
     </div>
+</div>
 
     <!-- Контейнер для нижнего меню -->
     <div id="footerMenu"></div>

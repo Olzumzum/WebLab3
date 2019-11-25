@@ -1,4 +1,4 @@
 $(function(){
-    $("#mailMenu").load("mainMenu.html");
+    $("#mainMenu").load("mainMenu.html");
     $("#footerMenu").load("footerMenu.html");
 });
