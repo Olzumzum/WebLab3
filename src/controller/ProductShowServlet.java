@@ -31,17 +31,20 @@ public class ProductShowServlet extends HttpServlet {
         mCakeList = cakeTable.getTableCake();
         req.setAttribute("listCake", mCakeList);
 
-        roleCheck(session);
+        System.out.println("Мы тут");
+        session.setAttribute("roleRule", roleCheck(session));
     }
 
-    private boolean roleCheck(HttpSession session){
+    private boolean roleCheck(HttpSession session) {
         String userRole = String.valueOf(session.getAttribute("userRole"));
 
-        UserRoleList userRoleList = new UserRoleList();
-        String role = userRoleList.roleCheck(userRole);
-        if(role == "admin")
-            return true;
-
+        if (!userRole.equals("null")) {
+            UserRoleList userRoleList = new UserRoleList();
+            String role = userRoleList.roleCheck(userRole);
+            System.out.println("Наша роль " + role);
+            if (role == "admin")
+                return true;
+        }
         return false;
     }
 }

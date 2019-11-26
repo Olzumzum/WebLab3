@@ -10,7 +10,7 @@ import java.sql.Statement;
 
 public class UserTable implements WorkUserTable {
 
-    private String userRole = "";
+    private String userRole;
 
     /**
      * Поиск пользователя по таблице

@@ -37,9 +37,14 @@
                     <h4>
                         <c:out value="${item.mProductDescription}"/>
                     </h4>
+                    <c:if test="${roleRule != null}" >
+                    <c:set var="roleRule" value="${roleRule}" />
+                    <c:if test="${roleRule == true}">
                     <h4 class="price">
                         <c:out value="${item.mWeight}"/> гр.
                     </h4>
+                    </c:if>
+                    </c:if>
                     <h4 class="weight">
                         <c:out value="${item.mPrice}"/> руб.
                     </h4>
