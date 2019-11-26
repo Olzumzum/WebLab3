@@ -30,7 +30,6 @@ abstract class ProductList {
                 ItemProduct itemProduct = new ItemProduct();
                 itemProduct.setmProductName(resultSet.getString("product_name"));
                 itemProduct.setmProductDescription(resultSet.getString("product_description"));
-                itemProduct.setmProductImage(new byte[]{resultSet.getByte("product_image")});
                 itemProduct.setmWeight(resultSet.getInt("weight"));
                 itemProduct.setmPrice(resultSet.getInt("price"));
 

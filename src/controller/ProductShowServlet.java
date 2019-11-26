@@ -1,6 +1,7 @@
 package controller;
 
 import model.DAO.CakeList;
+import model.DAO.UserRoleList;
 import model.entities.ItemProduct;
 
 import javax.servlet.ServletException;
@@ -8,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,8 +26,22 @@ public class ProductShowServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
         CakeList cakeTable = new CakeList();
         mCakeList = cakeTable.getTableCake();
         req.setAttribute("listCake", mCakeList);
+
+        roleCheck(session);
+    }
+
+    private boolean roleCheck(HttpSession session){
+        String userRole = String.valueOf(session.getAttribute("userRole"));
+
+        UserRoleList userRoleList = new UserRoleList();
+        String role = userRoleList.roleCheck(userRole);
+        if(role == "admin")
+            return true;
+
+        return false;
     }
 }

@@ -24,13 +24,13 @@
         <c:set var="i" value="${0}"/>
 
         <c:forEach items="${listCake}" var="item">
-
             <!-- Если это 0 элемент открываем контейнер-строчку -->
             <c:if test="${i == 0}">
                 <div class="row">
             </c:if>
             <div class="item_cake">
                 <div class="content_item_cake">
+
                     <h3 class="name_cake">
                         <c:out value="${item.mProductName}"/>
                     </h3>

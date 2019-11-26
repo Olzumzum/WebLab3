@@ -1,6 +1,6 @@
 package model.DAO;
 
-import model.entities.User;
+import model.entities.AllUser;
 
 public interface WorkUserTable {
     /**
@@ -10,11 +10,11 @@ public interface WorkUserTable {
      * @param user
      * @return
      */
-    boolean searchUserInTable(User user);
+    boolean searchUserInTable(AllUser user);
 
     /**
      * Adding a record to the user table
      * @param user
      */
-    void insetUserRecord(User user);
+    void insetUserRecord(AllUser user);
 }

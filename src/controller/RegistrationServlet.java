@@ -2,7 +2,7 @@ package controller;
 
 import model.DAO.UserTable;
 import model.DAO.WorkUserTable;
-import model.entities.User;
+import model.entities.AllUser;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,7 +19,7 @@ public class RegistrationServlet extends HttpServlet {
         String emailForm = req.getParameter("email");
         String passwordForm = req.getParameter("password");
 
-        User user = new User();
+        AllUser user = new AllUser();
         user.setEmailUser(emailForm);
         user.setPasswordUser(passwordForm);
 
