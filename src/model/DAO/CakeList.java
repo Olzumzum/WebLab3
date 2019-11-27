@@ -1,7 +1,6 @@
 package model.DAO;
 
 import model.DbConnection;
-import model.entities.ItemProduct;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -9,9 +8,17 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
-public class CakeList extends ProductList{
+/**
+ * Work with the cake table
+ */
+public class CakeList extends ProductList implements WorkListProduct{
 
-    public List getTableCake() {
+    /**
+     * get all table items
+     * @return List
+     */
+    @Override
+    public List getAllCakes() {
 
         /** Соединение с БД */
         DbConnection db = new DbConnection();

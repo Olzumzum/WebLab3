@@ -1,7 +1,7 @@
 <%@ page import="model.DAO.AssortmentList" %>
 <%@ page import="model.entities.ItemAssortment" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %><%--
+<%@ page import="java.util.ArrayList" %>
+<%--
   Created by IntelliJ IDEA.
   User: palm
   Date: 19.11.2019

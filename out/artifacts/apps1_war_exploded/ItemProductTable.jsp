@@ -1,13 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="model.entities.ItemProduct" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="model.DAO.CakeList" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: palm
   Date: 19.11.2019
   Time: 15:05
-  To change this template use File | Settings | File Templates.
+  Loading and displaying products in the form of blocks
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -16,20 +13,22 @@
     <title>Title</title>
 </head>
 <body>
-
-
 <table>
     <tr>
-        <!-- Счетчик для отображения продукции построчно: в одной строке 2 элемента -->
+        <!-- Counter for the presentation of products line by line: in one line -->
         <c:set var="i" value="${0}"/>
-
-        <c:forEach items="${listCake}" var="item">
-            <!-- Если это 0 элемент открываем контейнер-строчку -->
+        <c:forEach items="${listProduct}" var="item">
+            <!-- If this is 0 element open container line -->
             <c:if test="${i == 0}">
                 <div class="row">
             </c:if>
             <div class="item_cake">
                 <div class="content_item_cake">
+<!-- Admin Feature -->
+                    <c:set var="roleRule" value="${roleRule}" />
+                    <c:if test="${roleRule == true}">
+                    <a href="#"> Редактировать </a>
+                    </c:if>
 
                     <h3 class="name_cake">
                         <c:out value="${item.mProductName}"/>
@@ -37,14 +36,11 @@
                     <h4>
                         <c:out value="${item.mProductDescription}"/>
                     </h4>
-                    <c:if test="${roleRule != null}" >
-                    <c:set var="roleRule" value="${roleRule}" />
-                    <c:if test="${roleRule == true}">
+
                     <h4 class="price">
                         <c:out value="${item.mWeight}"/> гр.
                     </h4>
-                    </c:if>
-                    </c:if>
+
                     <h4 class="weight">
                         <c:out value="${item.mPrice}"/> руб.
                     </h4>
@@ -52,14 +48,14 @@
             </div>
 
             <c:choose>
-                <%-- Если элемент последний в строчке (i == 1)
-                то закрываем блок --%>
+                <%-- If the item is the last in the line (i == 1)
+                then close the block --%>
                 <c:when test="${i == 1}">
                     </div>
                     <c:set var="i" value="${0}"/>
                 </c:when>
 
-                <%-- Если элемент не последний в строчке (i != 1) закрываем блок --%>
+                <%-- If the item is not the last in the line (i! = 1), close the block --%>
                 <c:otherwise>
                     <c:set var="i" value="${i+1}"/>
                 </c:otherwise>

@@ -11,13 +11,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
+
+/**
+ * Download product lists and add data to the session.
+ * obtaining user rights information
+ */
 
 @WebServlet("/ProductShowServlet")
 public class ProductShowServlet extends HttpServlet {
-
-    private List<ItemProduct> mCakeList = new ArrayList<>();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -27,14 +29,23 @@ public class ProductShowServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
+
+        /**listing and loading product lists */
         CakeList cakeTable = new CakeList();
-        mCakeList = cakeTable.getTableCake();
+        List<ItemProduct> mCakeList = cakeTable.getAllCakes();
+
+        /** filling in session data */
         req.setAttribute("listCake", mCakeList);
 
-        System.out.println("Мы тут");
+        /** getting user role */
         session.setAttribute("roleRule", roleCheck(session));
     }
 
+    /**
+     * Сheck user rights
+     * @param session
+     * @return
+     */
     private boolean roleCheck(HttpSession session) {
         String userRole = String.valueOf(session.getAttribute("userRole"));
 
@@ -42,8 +53,7 @@ public class ProductShowServlet extends HttpServlet {
             UserRoleList userRoleList = new UserRoleList();
             String role = userRoleList.roleCheck(userRole);
             System.out.println("Наша роль " + role);
-            if (role == "admin")
-                return true;
+            return role.equals("admin");
         }
         return false;
     }

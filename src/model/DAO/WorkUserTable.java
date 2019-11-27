@@ -1,7 +1,10 @@
 package model.DAO;
 
-import model.entities.AllUser;
+import model.entities.User;
 
+/**
+ *User table class functions
+ */
 public interface WorkUserTable {
     /**
      * Search for a record in a database with the same parameters
@@ -10,11 +13,11 @@ public interface WorkUserTable {
      * @param user
      * @return
      */
-    boolean searchUserInTable(AllUser user);
+    boolean searchUserInTable(User user);
 
     /**
      * Adding a record to the user table
      * @param user
      */
-    void insetUserRecord(AllUser user);
+    void insetUserRecord(User user);
 }

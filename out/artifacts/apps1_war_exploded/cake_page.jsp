@@ -1,3 +1,5 @@
+<%@ page import="java.util.List" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!--
 Страница продукции пирожных и тортов
 -->
@@ -38,8 +40,14 @@
     <!-- Ассортимент -->
     <div class="content">
         <h2 class="title_content">Торты и пирожные</h2>
+        <c:set var="i" value="${0}"/>
 
+        <%
+            List list = (List) request.getAttribute("listCake");
+            session.setAttribute("listProduct", list);
+        %>
         <jsp:include page="ItemProductTable.jsp" />
+
     </div>
 </div>
 

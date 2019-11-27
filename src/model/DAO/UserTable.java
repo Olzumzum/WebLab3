@@ -1,13 +1,17 @@
 package model.DAO;
 
 import model.DbConnection;
-import model.entities.AllUser;
+import model.entities.User;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * Класс осуществляет работу с таблицей пользователей
+ * все возможные манипуляции с этой таблице описаны здесь
+ */
 public class UserTable implements WorkUserTable {
 
     private String userRole;
@@ -18,7 +22,7 @@ public class UserTable implements WorkUserTable {
      * @return
      */
     @Override
-    public boolean searchUserInTable(AllUser user) {
+    public boolean searchUserInTable(User user) {
 
         DbConnection db = new DbConnection();
         Connection connection = db.connect();
@@ -55,7 +59,7 @@ public class UserTable implements WorkUserTable {
      * @param user
      */
     @Override
-    public void insetUserRecord(AllUser user) {
+    public void insetUserRecord(User user) {
         DbConnection db = new DbConnection();
         Connection connection = db.connect();
 
@@ -75,6 +79,7 @@ public class UserTable implements WorkUserTable {
         }
     }
 
+    /** возвращает роль пользователя */
     public String getUserRole(){
         return userRole;
     }
