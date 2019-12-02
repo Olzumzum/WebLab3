@@ -12,7 +12,6 @@ import java.util.List;
  * Work with the cake table
  */
 public class CakeList extends ProductList implements WorkListProduct{
-
     /**
      * get all table items
      * @return List
@@ -24,7 +23,7 @@ public class CakeList extends ProductList implements WorkListProduct{
         DbConnection db = new DbConnection();
         Connection connection = db.connect();
 
-        Statement statement = null;
+        Statement statement;
         ResultSet result = null;
         try {
             statement = connection.createStatement();
@@ -41,5 +40,32 @@ public class CakeList extends ProductList implements WorkListProduct{
 
         return getTable(result);
     }
+
+    @Override
+    public List getCakesAssortmentCriterion(String criterion) {
+        criterion = "донаты";
+
+        /** Соединение с БД */
+        DbConnection db = new DbConnection();
+        Connection connection = db.connect();
+
+        Statement statement;
+        ResultSet result = null;
+        try {
+            statement = connection.createStatement();
+
+            result = statement.executeQuery("select product_name, product_description," +
+                    "       weight, price  from Cake" +
+                    "INNER JOIN AssortmentCake AC on Cake.assortment_cake_id = AC.assortment_cake_id" +
+                    "JOIN ItemProduct IP on Cake.item_product_id = IP.item_product_id where assortment_cake_name = 'донаты'" +
+                    ";");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return getTable(result);
+    }
+
 
 }

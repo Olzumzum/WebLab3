@@ -17,6 +17,7 @@
     <tr>
         <!-- Counter for the presentation of products line by line: in one line -->
         <c:set var="i" value="${0}"/>
+
         <c:forEach items="${listProduct}" var="item">
             <!-- If this is 0 element open container line -->
             <c:if test="${i == 0}">

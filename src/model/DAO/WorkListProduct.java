@@ -12,5 +12,6 @@ interface WorkListProduct {
      */
     List getAllCakes();
     /** get records by one assortment criterion */
+    List getCakesAssortmentCriterion(String criterion);
 
 }

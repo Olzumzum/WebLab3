@@ -29,10 +29,16 @@ public class ProductShowServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
+        List<ItemProduct> mCakeList;
 
         /**listing and loading product lists */
         CakeList cakeTable = new CakeList();
-        List<ItemProduct> mCakeList = cakeTable.getAllCakes();
+        if(req.getParameter("assort") == null)
+            mCakeList = cakeTable.getAllCakes();
+        else {
+            mCakeList = cakeTable.getCakesAssortmentCriterion(req.getParameter("assort"));
+
+        }
 
         /** filling in session data */
         req.setAttribute("listCake", mCakeList);

@@ -1,8 +1,10 @@
 package model.DAO;
 
+import controller.ProductShowServlet;
 import model.DbConnection;
 import model.entities.ItemAssortment;
 
+import javax.servlet.http.HttpServlet;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -65,4 +67,7 @@ public class AssortmentList {
 
     }
 
+    public void gettingListAssortmentCriterion(String criterion) {
+
+    }
 }
