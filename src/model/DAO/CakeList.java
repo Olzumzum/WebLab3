@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Work with the cake table
  */
-public class CakeList extends ProductList implements WorkListProduct{
+public class CakeList extends ProductList implements WorkListProduct {
 
     String mSwqlShowAll = "select product_name, assortment_cake_name, product_description, " +
             "product_image, weight, price  " +
@@ -19,6 +19,7 @@ public class CakeList extends ProductList implements WorkListProduct{
 
     /**
      * get all table items
+     *
      * @return List
      */
     @Override
@@ -33,10 +34,11 @@ public class CakeList extends ProductList implements WorkListProduct{
         try {
 
             statement = connection.prepareStatement(mSwqlShowAll);
-            statement.setNString(1, "Макарун сладкий");
-            statement.execute();
+            statement.setString(1, "Макарун сладкий");
+            result = statement.executeQuery();
 
         } catch (SQLException e) {
+            System.out.println("Ошибка запроса");
             e.printStackTrace();
         }
 
