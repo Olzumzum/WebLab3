@@ -28,6 +28,9 @@ public class ProductShowServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("text/html;charset=Windows-1251");
+        req.setCharacterEncoding("CP1251");
+
         HttpSession session = req.getSession();
         List<ItemProduct> mCakeList;
 

@@ -2,16 +2,21 @@ package model.DAO;
 
 import model.DbConnection;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.List;
 
 /**
  * Work with the cake table
  */
 public class CakeList extends ProductList implements WorkListProduct{
+
+    String mSwqlShowAll = "select product_name, assortment_cake_name, product_description, " +
+            "product_image, weight, price  " +
+            "from Cake " +
+            "INNER JOIN AssortmentCake AC on Cake.assortment_cake_id = AC.assortment_cake_id\n" +
+            "JOIN ItemProduct IP on Cake.item_product_id = IP.item_product_id " +
+            " where product_name = ?;";
+
     /**
      * get all table items
      * @return List
@@ -23,16 +28,13 @@ public class CakeList extends ProductList implements WorkListProduct{
         DbConnection db = new DbConnection();
         Connection connection = db.connect();
 
-        Statement statement;
+        PreparedStatement statement;
         ResultSet result = null;
         try {
-            statement = connection.createStatement();
 
-            result = statement.executeQuery("select product_name, assortment_cake_name, product_description, " +
-                    "product_image, weight, price  " +
-                    "from Cake \n" +
-                    "INNER JOIN AssortmentCake AC on Cake.assortment_cake_id = AC.assortment_cake_id\n" +
-                    "JOIN ItemProduct IP on Cake.item_product_id = IP.item_product_id");
+            statement = connection.prepareStatement(mSwqlShowAll);
+            statement.setNString(1, "Макарун сладкий");
+            statement.execute();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -55,9 +57,9 @@ public class CakeList extends ProductList implements WorkListProduct{
             statement = connection.createStatement();
 
             result = statement.executeQuery("select product_name, product_description," +
-                    "       weight, price  from Cake" +
+                    "weight, price  from Cake" +
                     "INNER JOIN AssortmentCake AC on Cake.assortment_cake_id = AC.assortment_cake_id" +
-                    "JOIN ItemProduct IP on Cake.item_product_id = IP.item_product_id where assortment_cake_name = 'донаты'" +
+                    "JOIN ItemProduct IP on Cake.item_product_id = IP.item_product_id where assortment_cake_name ='донаты'" +
                     ";");
 
         } catch (SQLException e) {

@@ -4,7 +4,7 @@
 Страница продукции пирожных и тортов
 -->
 
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
 <html lang="ru">
 <head>
     <meta charset="utf-8">
