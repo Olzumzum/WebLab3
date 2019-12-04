@@ -4,7 +4,7 @@
 Страница продукции пирожных и тортов
 -->
 
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html lang="ru">
 <head>
     <meta charset="utf-8">
@@ -18,6 +18,7 @@
 
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/main_menu.css">
+    <link rel="stylesheet" href="css/list_search.css">
     <script type="text/javascript" src="js/loaderMenu.js"></script>
     <title> Tasty House </title>
 </head>
@@ -30,11 +31,16 @@
 <!-- Контейнер для главного меню -->
 <div id="mailMenu"></div>
 
+<!-- Поиск -->
+<div class="search">
+    <jsp:include page="search.jsp"/>
+</div>
 
 <div class="container">
+
     <!--Подменю -->
     <div class="submenu">
-        <jsp:include page="Assortment.jsp" />
+        <jsp:include page="Assortment.jsp"/>
     </div>
 
     <!-- Ассортимент -->
@@ -46,13 +52,13 @@
             List list = (List) request.getAttribute("listCake");
             session.setAttribute("listProduct", list);
         %>
-        <jsp:include page="ItemProductTable.jsp" />
+        <jsp:include page="ItemProductTable.jsp"/>
 
     </div>
 </div>
 
-    <!-- Контейнер для нижнего меню -->
-    <div id="footerMenu"></div>
+<!-- Контейнер для нижнего меню -->
+<div id="footerMenu"></div>
 
 </body>
 </html>
