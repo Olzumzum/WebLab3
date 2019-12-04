@@ -37,8 +37,10 @@ public class ProductShowServlet extends HttpServlet {
         /**listing and loading product lists */
         CakeList cakeTable = new CakeList();
         if(req.getParameter("assort") == null)
+            /** get list all products */
             mCakeList = cakeTable.getAllCakes();
         else {
+            /** get list by assortment criterion */
             mCakeList = cakeTable.getCakesAssortmentCriterion(req.getParameter("assort"));
 
         }

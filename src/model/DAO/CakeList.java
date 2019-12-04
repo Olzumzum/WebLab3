@@ -50,6 +50,11 @@ public class CakeList extends ProductList implements WorkListProduct {
         return getTable(result);
     }
 
+    /**
+     * get a list by assortment criterion
+     * @param criterion
+     * @return
+     */
     @Override
     public List getCakesAssortmentCriterion(String criterion) {
 
