@@ -16,9 +16,7 @@ abstract class ProductList {
 
     /** вернуть таблицу по запросу*/
     List getTable(ResultSet resultSet){
-        /** Соединение с БД */
-        DbConnection db = new DbConnection();
-        Connection connection = db.connect();
+
 
         /** инициализация списка */
         List<ItemProduct> mListProducts = new ArrayList<>();
@@ -34,9 +32,6 @@ abstract class ProductList {
 
                 mListProducts.add(itemProduct);
             }
-
-            connection.close();
-            db.closeConnection();
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -10,12 +10,18 @@ import java.util.List;
  */
 public class CakeList extends ProductList implements WorkListProduct {
 
-    String mSwqlShowAll = "select product_name, assortment_cake_name, product_description, " +
+    private final static String SQL_REQUEST_SHOW_ALL = "select product_name, assortment_cake_name, product_description, " +
+            "product_image, weight, price  " +
+            "from Cake " +
+            "INNER JOIN AssortmentCake AC on Cake.assortment_cake_id = AC.assortment_cake_id\n" +
+            "JOIN ItemProduct IP on Cake.item_product_id = IP.item_product_id ";
+
+    private final static String SQL_REQUEST_SHOW_CRITERION_ASSORTMENT = "select product_name, assortment_cake_name, product_description, " +
             "product_image, weight, price  " +
             "from Cake " +
             "INNER JOIN AssortmentCake AC on Cake.assortment_cake_id = AC.assortment_cake_id\n" +
             "JOIN ItemProduct IP on Cake.item_product_id = IP.item_product_id " +
-            " where product_name = ?;";
+            " where assortment_cake_name = ?;";
 
     /**
      * get all table items
@@ -33,8 +39,7 @@ public class CakeList extends ProductList implements WorkListProduct {
         ResultSet result = null;
         try {
 
-            statement = connection.prepareStatement(mSwqlShowAll);
-            statement.setString(1, "Макарун сладкий");
+            statement = connection.prepareStatement(SQL_REQUEST_SHOW_ALL);
             result = statement.executeQuery();
 
         } catch (SQLException e) {
@@ -47,24 +52,21 @@ public class CakeList extends ProductList implements WorkListProduct {
 
     @Override
     public List getCakesAssortmentCriterion(String criterion) {
-        criterion = "донаты";
 
         /** Соединение с БД */
         DbConnection db = new DbConnection();
         Connection connection = db.connect();
 
-        Statement statement;
+        PreparedStatement statement;
         ResultSet result = null;
         try {
-            statement = connection.createStatement();
 
-            result = statement.executeQuery("select product_name, product_description," +
-                    "weight, price  from Cake" +
-                    "INNER JOIN AssortmentCake AC on Cake.assortment_cake_id = AC.assortment_cake_id" +
-                    "JOIN ItemProduct IP on Cake.item_product_id = IP.item_product_id where assortment_cake_name ='донаты'" +
-                    ";");
+            statement = connection.prepareStatement(SQL_REQUEST_SHOW_CRITERION_ASSORTMENT);
+            statement.setString(1, criterion);
+            result = statement.executeQuery();
 
         } catch (SQLException e) {
+            System.out.println("Ошибка запроса");
             e.printStackTrace();
         }
 
