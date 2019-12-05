@@ -28,23 +28,37 @@ public class ProductShowServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String searchCriterion = req.getParameter("searchCriterion");
+        String assortCriterion = req.getParameter("assort");
 
         HttpSession session = req.getSession();
-        List<ItemProduct> mCakeList;
+        List<ItemProduct> mCakeList = null;
 
         /**listing and loading product lists */
         CakeList cakeTable = new CakeList();
-        if(req.getParameter("assort") == null)
-            /** get list all products */
+        if ((assortCriterion == null) && (searchCriterion == null))
+        /** get list all products */
             mCakeList = cakeTable.getAllCakes();
         else {
+            /** search by two criteria */
+            if ((assortCriterion != null) && (searchCriterion != null)) {
+                cakeTable.getCakesListSearchAndAssortment(searchCriterion, assortCriterion);
+            }
+
+            /** search by one criteria */
+            if (searchCriterion == null)
             /** get list by assortment criterion */
-            mCakeList = cakeTable.getCakesAssortmentCriterion(req.getParameter("assort"));
+                mCakeList = cakeTable.getCakesAssortmentCriterion(assortCriterion);
+
+            if (assortCriterion == null) {
+                mCakeList = cakeTable.getCakesListSearch(searchCriterion);
+            }
         }
 
 
+        if (mCakeList != null)
         /** filling in session data */
-        req.setAttribute("listCake", mCakeList);
+            req.setAttribute("listCake", mCakeList);
 
         /** getting user role */
         session.setAttribute("roleRule", roleCheck(session));
@@ -52,6 +66,7 @@ public class ProductShowServlet extends HttpServlet {
 
     /**
      * Сheck user rights
+     *
      * @param session
      * @return
      */

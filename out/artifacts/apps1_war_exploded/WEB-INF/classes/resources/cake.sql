@@ -27,6 +27,15 @@ JOIN ItemProduct IP on Cake.item_product_id = IP.item_product_id
 where assortment_cake_name = 'донаты'
 ;
 
+/**поиск по имени продукции */
+select product_name, assortment_cake_name, product_description,
+       product_image, weight, price  from Cake
+                                              INNER JOIN AssortmentCake AC on Cake.assortment_cake_id = AC.assortment_cake_id
+                                              JOIN ItemProduct IP on Cake.item_product_id = IP.item_product_id
+where product_name = 'Донат очень круглый'
+and
+      assortment_cake_name = 'донаты';
+;
 
 
 

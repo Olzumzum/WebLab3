@@ -8,11 +8,12 @@ function searchList(form) {
 function sendDateAjax(searchCriterion){
     jQuery.ajax({
         type: 'POST',
-        url: 'SearchListServlet',
+        url: 'ProductShowServlet',
         data: {searchCriterion: searchCriterion},
         respons: 'xml',
         success:function (data) {
             console.log("Успешно");
+            $('#content').html(result);
         }
     })
 }

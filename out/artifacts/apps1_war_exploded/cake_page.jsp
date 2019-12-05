@@ -44,7 +44,7 @@
     </div>
 
     <!-- Ассортимент -->
-    <div class="content">
+    <div id="content" class="content">
         <h2 class="title_content">Торты и пирожные</h2>
         <c:set var="i" value="${0}"/>
 
