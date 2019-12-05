@@ -1,6 +1,18 @@
-function searchList() {
+function searchList(form) {
 
-    var searchCriterion = document.getElementById("search_field");
+    var searchCriterion = document.getElementById("searchfield").value;
+    console.log("Получено значение " + document.getElementById("searchfield").value);
+    sendDateAjax(searchCriterion);
+}
 
-    
+function sendDateAjax(searchCriterion){
+    jQuery.ajax({
+        type: 'POST',
+        url: 'SearchListServlet',
+        data: {searchCriterion: searchCriterion},
+        respons: 'xml',
+        success:function (data) {
+            console.log("Успешно");
+        }
+    })
 }

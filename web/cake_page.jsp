@@ -18,7 +18,7 @@
 
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/main_menu.css">
-    <link rel="stylesheet" href="css/list_search.css">
+
     <script type="text/javascript" src="js/loaderMenu.js"></script>
     <title> Tasty House </title>
 </head>

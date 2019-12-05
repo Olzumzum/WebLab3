@@ -61,6 +61,7 @@ public class UserTable implements WorkUserTable {
 
     /**
      * Зарегистрировать нового пользователя
+     * внесение новой записи в таблицу Users
      * @param user
      */
     @Override

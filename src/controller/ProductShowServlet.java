@@ -42,9 +42,6 @@ public class ProductShowServlet extends HttpServlet {
             mCakeList = cakeTable.getCakesAssortmentCriterion(req.getParameter("assort"));
         }
 
-        if(req.getParameter("searchList") != null){
-            System.out.println("Получен критерий " + req.getParameter("searchList"));
-        }
 
         /** filling in session data */
         req.setAttribute("listCake", mCakeList);

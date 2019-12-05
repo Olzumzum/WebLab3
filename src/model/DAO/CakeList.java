@@ -53,7 +53,7 @@ public class CakeList extends ProductList implements WorkListProduct {
     /**
      * get a list by assortment criterion
      * @param criterion
-     * @return
+     * @return List
      */
     @Override
     public List getCakesAssortmentCriterion(String criterion) {
@@ -78,5 +78,12 @@ public class CakeList extends ProductList implements WorkListProduct {
         return getTable(result);
     }
 
+    /**
+     * return list of cakes by search
+     * @param searchCriterion
+     * @return List
+     */
+    public List getCakesListSearch(String searchCriterion){
 
+    }
 }
