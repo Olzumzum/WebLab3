@@ -1,0 +1,53 @@
+<!--
+Страница представляет собой форму добавление продукта в базу данных
+-->
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- connect JQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <!-- connect JQuery ui -->
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet"
+          type="text/css"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
+    <script type="text/javascript" src="js/insertProduct.js"></script>
+    <link rel="stylesheet" href="css/insert_page.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <title>Insert information of product</title>
+</head>
+<body>
+
+<form id="insertProduct" class="insertProduct" action="" method="post">
+    <h2 class="title"> Добавить новый продукт в базу</h2>
+
+    <h3 class="subtitle"> Название продукта</h3>
+    <input id="productName" class="insertField" placeholder="Название продукта" required>
+
+    <h3 class="subtitle"> Описание добавляемого продукта</h3>
+    <input id="productDescription" class="insertField description" placeholder="Описание добавляемого продукта" required>
+
+    <h3 class="subtitle"> Вес </h3>
+    <input id="productWeight" class="insertField" placeholder="Вес продукта" required>
+
+    <h3 class="subtitle"> Стоимость </h3>
+    <input id="productPrice" class="insertField" placeholder="Стоимость вашего продукта" required>
+    <input type="submit" value="Занести в базу"
+           onclick="verificationEnteredData(document.getElementById('insertProduct'))"/>
+</form>
+
+<div>
+    <h4> Вернуться на предыдущую страницу</h4>
+    <a href="cake_page.jsp"> Вернуться </a>
+</div>
+
+
+<!-- Диалог неверно введенных данных -->
+    <div id="succsess_dialog" title="Заполнение данных продукции">
+        <p> Не все требуемые поля заполнены </p>
+    </div>
+
+
+</body>
+</html>

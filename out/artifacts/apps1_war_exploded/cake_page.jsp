@@ -33,7 +33,7 @@
 
 <!-- Поиск -->
 <div class="search">
-    <jsp:include page="search.jsp"/>
+    <jsp:include page="search.html"/>
 </div>
 
 <div class="container">

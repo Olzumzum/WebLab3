@@ -13,7 +13,7 @@ function sendDateAjax(searchCriterion){
         respons: 'xml',
         success:function (data) {
             console.log("Успешно");
-            $('#content').html(result);
+            $('#content').load();
         }
     })
 }
