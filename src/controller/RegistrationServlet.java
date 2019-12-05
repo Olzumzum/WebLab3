@@ -28,5 +28,7 @@ public class RegistrationServlet extends HttpServlet {
         /** record in the database of a new user */
         WorkUserTable userTable = new UserTable();
         userTable.insetUserRecord(user);
+
+        req.getRequestDispatcher("/authorization.html").forward(req, resp);
     }
 }

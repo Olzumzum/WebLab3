@@ -42,6 +42,5 @@
             %>
 </div>
 
-<script src="${pageContext.request.contextPath}/js/assortment.js"></script>
 </body>
 </html>

@@ -14,6 +14,11 @@ import java.sql.Statement;
  */
 public class UserTable implements WorkUserTable {
 
+    /** по умолчанию, все создаваемые пользователи - не администраторы,
+     * задаем id роли "user"
+     */
+    private final int ROLE_ID = 2;
+
     private String userRole;
 
     /**
@@ -68,8 +73,8 @@ public class UserTable implements WorkUserTable {
 
         try {
             Statement statement = connection.createStatement();
-            statement.executeUpdate("insert into Users(email_user, password_user) " +
-                    "value ('"+ email + "', '" + password + "');");
+            statement.executeUpdate("insert into Users(email_user, password_user, role_id) " +
+                    "value ('"+ email + "', '" + password + "', '" + ROLE_ID + "');");
 
             connection.close();
             db.closeConnection();
