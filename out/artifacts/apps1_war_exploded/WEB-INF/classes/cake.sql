@@ -37,5 +37,10 @@ and
       assortment_cake_name = 'донаты';
 ;
 
+insert into ItemProduct(product_name, product_description, product_image, weight, price)
+value ('name', 'ddddd', null, 5, 4);
+
+insert into Cake(assortment_cake_id, item_product_id) VALUE (1,5);
+
 
 

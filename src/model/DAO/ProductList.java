@@ -1,21 +1,21 @@
 package model.DAO;
 
-import model.DbConnection;
 import model.entities.ItemProduct;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/** 
- * Класс общей логики для таблицый продукции 
+/**
+ * Класс общей логики для таблицый продукции
  */
 abstract class ProductList {
 
-    /** вернуть таблицу по запросу*/
-    List getTable(ResultSet resultSet){
+    /**
+     * вернуть таблицу по запросу
+     */
+    List getTable(ResultSet resultSet) {
 
 
         /** инициализация списка */
@@ -38,5 +38,9 @@ abstract class ProductList {
 
 
         return mListProducts;
+    }
+
+    Integer getIdProductRecord() {
+
     }
 }

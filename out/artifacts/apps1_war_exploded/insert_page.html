@@ -19,20 +19,20 @@
 </head>
 <body>
 
-<form id="insertProduct" class="insertProduct" action="" method="post">
+<form id="insertProduct" class="insertProduct" action="InsertProductServlet" method="post">
     <h2 class="title"> Добавить новый продукт в базу</h2>
 
     <h3 class="subtitle"> Название продукта</h3>
-    <input id="productName" class="insertField" placeholder="Название продукта" required>
+    <input id="productName" name="productName" class="insertField" placeholder="Название продукта" required>
 
     <h3 class="subtitle"> Описание добавляемого продукта</h3>
-    <input id="productDescription" class="insertField description" placeholder="Описание добавляемого продукта" required>
+    <input id="productDescription" name="productDescription" class="insertField description" placeholder="Описание добавляемого продукта" required>
 
     <h3 class="subtitle"> Вес </h3>
-    <input id="productWeight" class="insertField" placeholder="Вес продукта" required>
+    <input id="productWeight" name="productWeight" class="insertField" placeholder="Вес продукта" required>
 
     <h3 class="subtitle"> Стоимость </h3>
-    <input id="productPrice" class="insertField" placeholder="Стоимость вашего продукта" required>
+    <input id="productPrice" name="productPrice" class="insertField" placeholder="Стоимость вашего продукта" required>
     <input type="submit" value="Занести в базу"
            onclick="verificationEnteredData(document.getElementById('insertProduct'))"/>
 </form>
