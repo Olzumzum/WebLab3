@@ -20,7 +20,7 @@ JOIN ItemProduct IP on Cake.item_product_id = IP.item_product_id
 ;
 
 /** вывод донатов */
-select product_name, assortment_cake_name, product_description,
+select item_product_id, product_name, assortment_cake_name, product_description,
        product_image, weight, price  from Cake
 INNER JOIN AssortmentCake AC on Cake.assortment_cake_id = AC.assortment_cake_id
 JOIN ItemProduct IP on Cake.item_product_id = IP.item_product_id
@@ -45,5 +45,7 @@ insert into Cake(assortment_cake_id, item_product_id) VALUE (1,5);
 select assortment_cake_id from AssortmentCake
 where assortment_cake_name = 'Донаты';
 
+
+select * from
 
 

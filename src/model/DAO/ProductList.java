@@ -25,6 +25,7 @@ abstract class ProductList {
         try {
             while (resultSet.next()) {
                 ItemProduct itemProduct = new ItemProduct();
+                itemProduct.setmIdProduct(resultSet.getInt("item_product_id"));
                 itemProduct.setmProductName(resultSet.getString("product_name"));
                 itemProduct.setmProductDescription(resultSet.getString("product_description"));
                 itemProduct.setmWeight(resultSet.getInt("weight"));

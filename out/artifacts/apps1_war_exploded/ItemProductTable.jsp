@@ -34,30 +34,30 @@
             <div class="item_cake">
                 <div class="content_item_cake">
 <!-- Admin Feature -->
-                    <c:if test="${roleRule == true}">
-                    <a href="#"> Редактировать </a>
-                    </c:if>
+                   <%-- <c:if test="${roleRule == true}"> --%>
+                    <a href="edit_item_page.jsp?idProduct=${item.mIdProduct}"> Редактировать </a>
+                        <%--  </c:if>--%>
 
-                    <h3 class="name_cake">
-                        <c:out value="${item.mProductName}"/>
-                    </h3>
-                    <h4>
-                        <c:out value="${item.mProductDescription}"/>
-                    </h4>
+                         <h3 class="name_cake">
+                             <c:out value="${item.mProductName}"/>
+                         </h3>
+                         <h4>
+                             <c:out value="${item.mProductDescription}"/>
+                         </h4>
 
-                    <h4 class="price">
-                        <c:out value="${item.mWeight}"/> гр.
-                    </h4>
+                         <h4 class="price">
+                             <c:out value="${item.mWeight}"/> гр.
+                         </h4>
 
-                    <h4 class="weight">
-                        <c:out value="${item.mPrice}"/> руб.
-                    </h4>
-                </div>
-            </div>
+                         <h4 class="weight">
+                             <c:out value="${item.mPrice}"/> руб.
+                         </h4>
+                     </div>
+                 </div>
 
-            <c:choose>
-                <%-- If the item is the last in the line (i == 1)
-                then close the block --%>
+                 <c:choose>
+                     <%-- If the item is the last in the line (i == 1)
+                     then close the block --%>
                 <c:when test="${i == 1}">
                     </div>
                     <c:set var="i" value="${0}"/>

@@ -14,8 +14,7 @@ public class CakeList extends ProductList implements WorkListProduct {
     /**
      * get the whole list
      */
-    private final static String SQL_REQUEST_SHOW_ALL = "select product_name, assortment_cake_name, product_description, " +
-            "product_image, weight, price  " +
+    private final static String SQL_REQUEST_SHOW_ALL = "select * " +
             "from Cake " +
             "INNER JOIN AssortmentCake AC on Cake.assortment_cake_id = AC.assortment_cake_id\n" +
             "JOIN ItemProduct IP on Cake.item_product_id = IP.item_product_id ";
@@ -23,9 +22,7 @@ public class CakeList extends ProductList implements WorkListProduct {
     /**
      * get a list by assortment criterion
      */
-    private final static String SQL_REQUEST_SHOW_CRITERION_ASSORTMENT = "select product_name, assortment_cake_name, " +
-            "product_description, " +
-            "product_image, weight, price  " +
+    private final static String SQL_REQUEST_SHOW_CRITERION_ASSORTMENT = "select * " +
             "from Cake " +
             "INNER JOIN AssortmentCake AC on Cake.assortment_cake_id = AC.assortment_cake_id\n" +
             "JOIN ItemProduct IP on Cake.item_product_id = IP.item_product_id " +
@@ -34,33 +31,45 @@ public class CakeList extends ProductList implements WorkListProduct {
     /**
      * get a list by search criterion
      */
-    private final static String SQL_REQUEST_SEARCH = "select product_name, assortment_cake_name, product_description," +
-            "       product_image, weight, price  from Cake" +
-            "                                              INNER JOIN AssortmentCake AC on Cake.assortment_cake_id = AC.assortment_cake_id" +
-            "                                              JOIN ItemProduct IP on Cake.item_product_id = IP.item_product_id " +
+    private final static String SQL_REQUEST_SEARCH = "select * " +
+            "from Cake " +
+            "INNER JOIN AssortmentCake AC on Cake.assortment_cake_id = AC.assortment_cake_id " +
+            "JOIN ItemProduct IP on Cake.item_product_id = IP.item_product_id " +
             "where product_name = ?;";
 
     /**
      * get a list by search criteria and assortment
      */
-    private final static String SQL_REQUEST_SEARCH_AND_ASSORTMENT = "select product_name, assortment_cake_name, " +
-            "product_description," +
-            " product_image, weight, price from Cake " +
+    private final static String SQL_REQUEST_SEARCH_AND_ASSORTMENT = "select * " +
+            "from Cake " +
             "INNER JOIN AssortmentCake AC on Cake.assortment_cake_id = AC.assortment_cake_id " +
             "INNER JOIN ItemProduct IP on Cake.item_product_id = IP.item_product_id " +
             "where product_name = ? andssortment_cake_name = ?";
 
-    /** добавить новую продукцию */
+    /**
+     * добавить новую продукцию
+     */
     private final static String SQL_REQUEST_INSERT = "insert into ItemProduct" +
             "(product_name, product_description, weight,price)" +
             " value (?, ?, ?, ?);";
 
-    /** получить id названия ассортимента */
+    /**
+     * получить id названия ассортимента
+     */
     private final String SQL_REQUEST_GET_ID_ASSORTMENT = "select assortment_cake_id from AssortmentCake\n" +
             "where assortment_cake_name = ?;";
 
-    /** добавить запись в таблицу Cake */
+    /**
+     * добавить запись в таблицу Cake
+     */
     private final String SQL_REQUEST_INSERT_CAKE = "insert into Cake(assortment_cake_id, item_product_id) VALUE (?,?);";
+
+    /** вернуть запись по id */
+    private final String SQL_REQUEST_RETURN_RECORD_BY_ID = "select * from Cake " +
+            "INNER JOIN AssortmentCake AC on Cake.assortment_cake_id = AC.assortment_cake_id " +
+            "INNER JOIN ItemProduct IP on Cake.item_product_id = IP.item_product_id " +
+            "where IP.item_product_id = ?;";
+
     /**
      * get all table items
      *
@@ -75,17 +84,23 @@ public class CakeList extends ProductList implements WorkListProduct {
 
         PreparedStatement statement;
         ResultSet result = null;
+        List itemCakeList = null;
         try {
 
             statement = connection.prepareStatement(SQL_REQUEST_SHOW_ALL);
             result = statement.executeQuery();
+
+            itemCakeList = getTable(result);
+            connection.close();
+            db.closeConnection();
 
         } catch (SQLException e) {
             System.out.println("Ошибка запроса");
             e.printStackTrace();
         }
 
-        return getTable(result);
+        
+        return itemCakeList;
     }
 
     /**
@@ -103,18 +118,24 @@ public class CakeList extends ProductList implements WorkListProduct {
 
         PreparedStatement statement;
         ResultSet result = null;
+        List itemCakeList = null;
         try {
 
             statement = connection.prepareStatement(SQL_REQUEST_SHOW_CRITERION_ASSORTMENT);
             statement.setString(1, criterion);
             result = statement.executeQuery();
 
+            itemCakeList = getTable(result);
+
+            connection.close();
+            db.closeConnection();
+
         } catch (SQLException e) {
             System.out.println("Ошибка запроса");
             e.printStackTrace();
         }
 
-        return getTable(result);
+        return itemCakeList;
     }
 
     /**
@@ -130,18 +151,24 @@ public class CakeList extends ProductList implements WorkListProduct {
 
         PreparedStatement statement;
         ResultSet result = null;
+        List itemCakeList = null;
         try {
 
             statement = connection.prepareStatement(SQL_REQUEST_SEARCH);
             statement.setString(1, searchCriterion);
             result = statement.executeQuery();
 
+            itemCakeList = getTable(result);
+
+            connection.close();
+            db.closeConnection();
+
         } catch (SQLException e) {
             System.out.println("Ошибка запроса");
             e.printStackTrace();
         }
 
-        return getTable(result);
+        return itemCakeList;
     }
 
     /**
@@ -157,6 +184,7 @@ public class CakeList extends ProductList implements WorkListProduct {
 
         PreparedStatement statement;
         ResultSet result = null;
+        List itemCakeList = null;
         try {
 
             statement = connection.prepareStatement(SQL_REQUEST_SEARCH_AND_ASSORTMENT);
@@ -164,16 +192,22 @@ public class CakeList extends ProductList implements WorkListProduct {
             statement.setString(2, assortmentCriterion);
             result = statement.executeQuery();
 
+            itemCakeList = getTable(result);
+
+            connection.close();
+            db.closeConnection();
+
         } catch (SQLException e) {
             System.out.println("Ошибка запроса");
             e.printStackTrace();
         }
 
-        return getTable(result);
+        return itemCakeList;
     }
 
     /**
      * insert a new record in db
+     *
      * @param itemProduct
      */
     public void insertProductIntoList(ItemProduct itemProduct, String assortmentName) {
@@ -184,8 +218,8 @@ public class CakeList extends ProductList implements WorkListProduct {
         ResultSet result = null;
         try {
             /** fill the columns with occupied */
-            statement = connection.prepareStatement(SQL_REQUEST_INSERT,  Statement.RETURN_GENERATED_KEYS);
-            statement.setString(1,itemProduct.getmProductName());
+            statement = connection.prepareStatement(SQL_REQUEST_INSERT, Statement.RETURN_GENERATED_KEYS);
+            statement.setString(1, itemProduct.getmProductName());
             statement.setString(2, itemProduct.getmProductDescription());
             statement.setInt(3, itemProduct.getmWeight());
             statement.setInt(4, itemProduct.getmPrice());
@@ -196,7 +230,7 @@ public class CakeList extends ProductList implements WorkListProduct {
             /** get id of added record */
             result = statement.getGeneratedKeys();
             int idRecord = 0;
-            if(result.next()){
+            if (result.next()) {
                 idRecord = result.getInt(1);
                 System.out.println("Значение id = " + idRecord);
             }
@@ -208,6 +242,9 @@ public class CakeList extends ProductList implements WorkListProduct {
 
             statement.execute();
 
+            connection.close();
+            db.closeConnection();
+
         } catch (SQLException e) {
             System.out.println("Ошибка запроса");
             e.printStackTrace();
@@ -218,8 +255,8 @@ public class CakeList extends ProductList implements WorkListProduct {
      * вернуть id записи по названию ассортимента
      */
     public int gettingListAssortmentCriterion(String criterion) {
-        DbConnection dbConnection = new DbConnection();
-        Connection connection = dbConnection.connect();
+        DbConnection db = new DbConnection();
+        Connection connection = db.connect();
 
         PreparedStatement statement;
         ResultSet resultSet;
@@ -229,14 +266,48 @@ public class CakeList extends ProductList implements WorkListProduct {
             statement.setString(1, criterion);
             resultSet = statement.executeQuery();
 
-            if(resultSet.next()){
+            if (resultSet.next()) {
                 idAssortment = resultSet.getInt(1);
                 System.out.println("Id ассортимента " + idAssortment);
             }
+
+            connection.close();
+            db.closeConnection();
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return idAssortment;
+    }
+
+    public ItemProduct getItemProductById(int idProduct){
+        DbConnection db = new DbConnection();
+        Connection connection = db.connect();
+
+        PreparedStatement statement;
+        ResultSet resultSet;
+        try{
+            statement = connection.prepareStatement(SQL_REQUEST_RETURN_RECORD_BY_ID);
+            statement.setInt(1, idProduct);
+            resultSet = statement.executeQuery();
+
+            ItemProduct itemProduct = new ItemProduct();
+            if(resultSet.next()){
+                itemProduct.setmIdProduct(resultSet.getInt("item_product_id"));
+                itemProduct.setmProductName(resultSet.getString("product_name"));
+                itemProduct.setmProductDescription(resultSet.getString("product_description"));
+                itemProduct.setmWeight(resultSet.getInt("weight"));
+                itemProduct.setmPrice(resultSet.getInt("price"));
+            }
+
+            connection.close();
+            db.closeConnection();
+
+            return itemProduct;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }

@@ -7,6 +7,7 @@ import java.io.Serializable;
  */
 
 public class ItemProduct implements Serializable {
+    private int mIdProduct;
     private String mProductName;
     private String mProductDescription;
     private byte[] mProductImage;
@@ -21,6 +22,15 @@ public class ItemProduct implements Serializable {
         this.mPrice = mPrice;
     }
 */
+
+    public int getmIdProduct() {
+        return mIdProduct;
+    }
+
+    public void setmIdProduct(int mIdProduct) {
+        this.mIdProduct = mIdProduct;
+    }
+
     public String getmProductName() {
         return mProductName;
     }
