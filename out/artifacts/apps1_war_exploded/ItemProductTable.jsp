@@ -13,6 +13,14 @@
     <title>Title</title>
 </head>
 <body>
+
+<c:set var="roleRule" value="${roleRule}" />
+<c:if test="${roleRule == true}">
+<div>
+    <a href="insert_page.html"> Добавить новый товар </a>
+</div>
+</c:if>
+
 <table>
     <tr>
         <!-- Counter for the presentation of products line by line: in one line -->
@@ -26,7 +34,6 @@
             <div class="item_cake">
                 <div class="content_item_cake">
 <!-- Admin Feature -->
-                    <c:set var="roleRule" value="${roleRule}" />
                     <c:if test="${roleRule == true}">
                     <a href="#"> Редактировать </a>
                     </c:if>
