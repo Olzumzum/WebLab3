@@ -40,7 +40,7 @@ abstract class ProductList {
         return mListProducts;
     }
 
-    Integer getIdProductRecord() {
+   /* Integer getIdProductRecord() {
 
-    }
+    }*/
 }

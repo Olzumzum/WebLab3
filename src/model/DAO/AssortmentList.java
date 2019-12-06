@@ -1,14 +1,9 @@
 package model.DAO;
 
-import controller.ProductShowServlet;
 import model.DbConnection;
 import model.entities.ItemAssortment;
 
-import javax.servlet.http.HttpServlet;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,17 +11,23 @@ import java.util.List;
  * Загрузка ассортимента выбранной категории продукции их БД
  */
 public class AssortmentList {
-    /** Переменная для получения имени таблицы ассортимента
+
+
+
+    /**
+     * Переменная для получения имени таблицы ассортимента
      * таких таблиц несколько в зависимости от вида продукции
      */
     private String mNameTable = null;
 
-    /** инициализация списка */
+    /**
+     * инициализация списка
+     */
     private List<ItemAssortment> mListAssortment = new ArrayList<>();
 
 
     public AssortmentList(String nameTable) {
-      mNameTable = nameTable;
+        mNameTable = nameTable;
     }
 
     /**
@@ -43,11 +44,11 @@ public class AssortmentList {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("select assortment_cake_name from " + mNameTable + " ;");
 
-        /** Заполнение списка */
-        while(resultSet.next()){
-            ItemAssortment itemAssortment = new ItemAssortment(resultSet.getString("assortment_cake_name"));
-            mListAssortment.add(itemAssortment);
-        }
+            /** Заполнение списка */
+            while (resultSet.next()) {
+                ItemAssortment itemAssortment = new ItemAssortment(resultSet.getString("assortment_cake_name"));
+                mListAssortment.add(itemAssortment);
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -55,19 +56,19 @@ public class AssortmentList {
 
     }
 
-    /** если список еще не заполнен, вызвать функцию listFilling
+    /**
+     * если список еще не заполнен, вызвать функцию listFilling
      * иначе вернуть уже существующий заполненный список
+     *
      * @return List<ItemAssortment>
      */
-    public List getList(){
-        if(mListAssortment.isEmpty())
+    public List getList() {
+        if (mListAssortment.isEmpty())
             lsitFilling();
 
         return mListAssortment;
 
     }
 
-    public void gettingListAssortmentCriterion(String criterion) {
 
-    }
 }

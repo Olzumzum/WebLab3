@@ -48,7 +48,7 @@ public class InsertProductServlet  extends HttpServlet {
             itemProduct.setmPrice(priceProduct);
 
             CakeList cakeList = new CakeList();
-            cakeList.insertProductIntoList(itemProduct);
+            cakeList.insertProductIntoList(itemProduct, "Донаты");
         } else {
             System.out.println("Неверно введены данные");
         }

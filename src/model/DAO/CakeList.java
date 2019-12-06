@@ -3,10 +3,7 @@ package model.DAO;
 import model.DbConnection;
 import model.entities.ItemProduct;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 /**
@@ -53,11 +50,17 @@ public class CakeList extends ProductList implements WorkListProduct {
             "INNER JOIN ItemProduct IP on Cake.item_product_id = IP.item_product_id " +
             "where product_name = ? andssortment_cake_name = ?";
 
+    /** добавить новую продукцию */
     private final static String SQL_REQUEST_INSERT = "insert into ItemProduct" +
             "(product_name, product_description, weight,price)" +
             " value (?, ?, ?, ?);";
 
+    /** получить id названия ассортимента */
+    private final String SQL_REQUEST_GET_ID_ASSORTMENT = "select assortment_cake_id from AssortmentCake\n" +
+            "where assortment_cake_name = ?;";
 
+    /** добавить запись в таблицу Cake */
+    private final String SQL_REQUEST_INSERT_CAKE = "insert into Cake(assortment_cake_id, item_product_id) VALUE (?,?);";
     /**
      * get all table items
      *
@@ -173,26 +176,67 @@ public class CakeList extends ProductList implements WorkListProduct {
      * insert a new record in db
      * @param itemProduct
      */
-    public void insertProductIntoList(ItemProduct itemProduct) {
+    public void insertProductIntoList(ItemProduct itemProduct, String assortmentName) {
         DbConnection db = new DbConnection();
         Connection connection = db.connect();
 
         PreparedStatement statement;
         ResultSet result = null;
         try {
-
-            statement = connection.prepareStatement(SQL_REQUEST_INSERT);
+            /** fill the columns with occupied */
+            statement = connection.prepareStatement(SQL_REQUEST_INSERT,  Statement.RETURN_GENERATED_KEYS);
             statement.setString(1,itemProduct.getmProductName());
             statement.setString(2, itemProduct.getmProductDescription());
             statement.setInt(3, itemProduct.getmWeight());
             statement.setInt(4, itemProduct.getmPrice());
 
-            statement.executeLargeUpdate();
-             getIdProductRecord();
+            /** fullfill the request */
+            statement.execute();
+
+            /** get id of added record */
+            result = statement.getGeneratedKeys();
+            int idRecord = 0;
+            if(result.next()){
+                idRecord = result.getInt(1);
+                System.out.println("Значение id = " + idRecord);
+            }
+
+            int idAssortment = gettingListAssortmentCriterion(assortmentName);
+            statement = connection.prepareStatement(SQL_REQUEST_INSERT_CAKE);
+            statement.setInt(1, idAssortment);
+            statement.setInt(2, idRecord);
+
+            statement.execute();
 
         } catch (SQLException e) {
             System.out.println("Ошибка запроса");
             e.printStackTrace();
         }
+    }
+
+    /**
+     * вернуть id записи по названию ассортимента
+     */
+    public int gettingListAssortmentCriterion(String criterion) {
+        DbConnection dbConnection = new DbConnection();
+        Connection connection = dbConnection.connect();
+
+        PreparedStatement statement;
+        ResultSet resultSet;
+        int idAssortment = 0;
+        try {
+            statement = connection.prepareStatement(SQL_REQUEST_GET_ID_ASSORTMENT);
+            statement.setString(1, criterion);
+            resultSet = statement.executeQuery();
+
+            if(resultSet.next()){
+                idAssortment = resultSet.getInt(1);
+                System.out.println("Id ассортимента " + idAssortment);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return idAssortment;
     }
 }

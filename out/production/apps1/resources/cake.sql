@@ -42,5 +42,8 @@ value ('name', 'ddddd', null, 5, 4);
 
 insert into Cake(assortment_cake_id, item_product_id) VALUE (1,5);
 
+select assortment_cake_id from AssortmentCake
+where assortment_cake_name = 'Донаты';
+
 
 
