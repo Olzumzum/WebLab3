@@ -14,30 +14,31 @@
 <jsp:include page="/EditItemProductServlet"/>
 <jsp:useBean id="itemEditProduct" class="model.entities.ItemProduct"/>
 <%
+    int idProduct = (int) request.getAttribute("idProduct");
     String nameProdct = (String) request.getAttribute("nameEditProduct");
     String descriptionProduct = (String) request.getAttribute("descriptionProduct");
-    if(descriptionProduct == null)
-        descriptionProduct = "*";
     int weightProduct = (int) request.getAttribute("weightProduct");
     int priceProduct = (int) request.getAttribute("priceProduct");
 
 %>
 
 <jsp:setProperty name="itemEditProduct" property="mProductName" value="<%= nameProdct%>"/>
+<jsp:setProperty name="itemEditProduct" property="mIdProduct" value="<%= idProduct%>"/>
 <jsp:setProperty name="itemEditProduct" property="mProductDescription" value="<%= descriptionProduct %>"/>
 <jsp:setProperty name="itemEditProduct" property="mWeight" value="<%= weightProduct%>" />
 <jsp:setProperty name="itemEditProduct" property="mPrice" value="<%= priceProduct%>" />
 
-<form id="insertProduct" class="insertProduct" action="EditItemProductServlet" method="post">
+<form id="insertProduct" class="insertProduct" action="SaveChangesServlet" method="post">
 
     <h2 class="title"> Редактировать товар</h2>
 
+    <input name="idProduct" value="${itemEditProduct.mIdProduct}" hidden>
     <h3 class="subtitle"> Название продукта</h3>
     <input id="productName" name="productName" class="insertField" value="${itemEditProduct.mProductName}" required>
 
     <h3 class="subtitle"> Описание добавляемого продукта</h3>
     <input id="productDescription" name="productDescription" class="insertField description"
-           value="${itemEditProduct.mProductDescription}" required>
+           value="${itemEditProduct.mProductDescription}">
 
     <h3 class="subtitle"> Вес </h3>
     <input id="productWeight" name="productWeight" class="insertField"
