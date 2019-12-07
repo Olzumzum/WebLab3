@@ -11,9 +11,9 @@ function sendDateAjax(searchCriterion){
         url: 'ProductShowServlet',
         data: {searchCriterion: searchCriterion},
         respons: 'xml',
-        success:function (data) {
+        success:function (html) {
             console.log("Успешно");
-            $('#content').load();
+            $('#content').html("page_cake.jsp?" +  searchCriterion);
         }
     })
 }

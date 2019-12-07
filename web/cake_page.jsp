@@ -26,18 +26,18 @@
 <div id="mainMenu"></div>
 
 <!-- Загрузка данных о продукции из БД -->
+<c:if test="${searchCriterion == null}">
 <jsp:include page="/ProductShowServlet"/>
-
+</c:if>
 <!-- Контейнер для главного меню -->
 <div id="mailMenu"></div>
 
 <!-- Поиск -->
 <div class="search">
-    <jsp:include page="search.html"/>
+    <jsp:include page="search.jsp"/>
 </div>
 
 <div class="container">
-
     <!--Подменю -->
     <div class="submenu">
         <jsp:include page="Assortment.jsp"/>
