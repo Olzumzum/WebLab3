@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/** сервлет сохраняет измениня записи в бд */
+/**
+ * сервлет сохраняет измениня записи в бд
+ */
 @WebServlet("/SaveChangesServlet")
 public class SaveChangaseServlet extends HttpServlet {
 
@@ -18,22 +20,40 @@ public class SaveChangaseServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html; charset=UTF-8");
         req.setCharacterEncoding("UTF-8");
+        /** изменяемый объект */
+        ItemProduct itemProduct = null;
+
+        /** поля изменяемого объекта */
+        String nameProduct = null;
+        String descriptionProduct = null;
+        Integer weightProduct = null;
+        Integer priceProduct = null;
 
         /** получаем данные формы */
-        String nameProduct = req.getParameter("productName");
-        String descriptionProduct = req.getParameter("productDescription");
-        int weightProduct = Integer.parseInt(req.getParameter("productWeight"));
-        int priceProduct = Integer.parseInt(req.getParameter("productPrice"));
+        nameProduct = req.getParameter("productName");
+        descriptionProduct = req.getParameter("productDescription");
 
-        ItemProduct itemProduct = new ItemProduct(nameProduct, descriptionProduct,
-                null, weightProduct, priceProduct);
+        /** проверка вводимых данных */
+        try {
+            weightProduct = Integer.parseInt(req.getParameter("productWeight"));
+            priceProduct = Integer.parseInt(req.getParameter("productPrice"));
+        } catch (NumberFormatException ex) {
+            ex.printStackTrace();
+            System.out.println("Неверный формат данных");
+            req.getRequestDispatcher("edit_item_page.jsp").forward(req, resp);
+        }
 
-        /** по id получаем изменяемую запись */
-        int idEditRecord = Integer.parseInt(req.getParameter("idProduct"));
-        CakeList cakeList = new CakeList();
+        if ((weightProduct != null) && (priceProduct != null)) {
+            itemProduct = new ItemProduct(nameProduct, descriptionProduct,
+                    null, weightProduct, priceProduct);
 
-        boolean succsessStatus = cakeList.saveChangsItem(idEditRecord, itemProduct);
-        req.setAttribute("succsessStatusConservation", succsessStatus);
+            /** по id получаем изменяемую запись */
+            int idEditRecord = Integer.parseInt(req.getParameter("idProduct"));
+            CakeList cakeList = new CakeList();
+
+            boolean succsessStatus = cakeList.saveChangsItem(idEditRecord, itemProduct);
+            req.setAttribute("succsessStatusConservation", succsessStatus);
+        }
 
     }
 }

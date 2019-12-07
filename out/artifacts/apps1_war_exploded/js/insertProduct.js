@@ -21,7 +21,7 @@ function verificationEnteredData(form) {
         console.log("Тип поля 'цена' - цифра - все верно");
     else {
         console.log("Ошибка ввода поля 'цена'");
-        //$("#succsess_dialog").dialog("open");
+        $("#succsess_dialog").dialog("open");
     }
 
     var succsessStatus = request.getAttribute("succsessStatusConservation");

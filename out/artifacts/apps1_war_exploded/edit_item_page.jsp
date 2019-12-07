@@ -8,8 +8,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <script type="text/javascript" src="js/loaderMenu.js"></script>
-    <script type="text/javascript" src="edit_item_page.jsp"></script>
+    <!-- connect JQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <!-- connect JQuery ui -->
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
+    <script type="text/javascript" src="js/insertProduct.js"></script>
+    <link rel="stylesheet" href="css/insert_page.css">
+    <link rel="stylesheet" href="css/fonts.css">
     <title>Title</title>
 </head>
 <body>
@@ -53,11 +60,16 @@
            onclick="verificationEnteredData(document.getElementById('insertProduct'))"/>
 </form>
 
+<div>
+    <h4> Вернуться на предыдущую страницу</h4>
+    <a href="cake_page.jsp"> Вернуться </a>
+</div>
+
 
 <!-- Диалог неверно введенных данных -->
 <form>
     <div id="succsess_dialog" title="Заполнение данных продукции">
-        <p> Не все требуемые поля заполнены </p>
+        <p> Неверно заполнены поля </p>
     </div>
 </form>
 <!-- Диалог успеха сохранения -->
