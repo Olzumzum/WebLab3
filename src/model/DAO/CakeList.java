@@ -76,6 +76,10 @@ public class CakeList extends ProductList implements WorkListProduct {
             "                       weight = ?, price = ? " +
             "where item_product_id = ?;";
 
+    /**удаление записи по id */
+    private final String SQL_REQUEST_DELETE_CAKE = "delete from Cake where item_product_id = ?";
+    private final String SQL_REQUEST_DELETE_ITEM_PRODUCT = "delete from ItemProduct where item_product_id = ?";
+
     /**
      * get all table items
      *
@@ -342,6 +346,33 @@ public class CakeList extends ProductList implements WorkListProduct {
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Не удалось изменить запись");
+            return false;
+        }
+    }
+
+    /**удаление записи */
+    public boolean deleteRecord(int idProduct){
+        DbConnection db = new DbConnection();
+        Connection connection = db.connect();
+
+        PreparedStatement statement;
+        ResultSet resultSet;
+        try{
+            statement = connection.prepareStatement(SQL_REQUEST_DELETE_CAKE);
+            statement.setInt(1, idProduct);
+            statement.execute();
+
+            statement = connection.prepareStatement(SQL_REQUEST_DELETE_ITEM_PRODUCT);
+            statement.setInt(1, idProduct);
+            statement.execute();
+
+            connection.close();
+            db.closeConnection();
+
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Удаление не завершено успешно");
             return false;
         }
     }

@@ -44,6 +44,7 @@
 <!-- Admin Feature -->
                    <%-- <c:if test="${roleRule == true}"> --%>
                     <a href="edit_item_page.jsp?idProduct=${item.mIdProduct}"> Редактировать </a>
+                    <a href="delete_page.jsp?idProduct=${item.mIdProduct}"> Удалить </a>
                         <%--  </c:if>--%>
 
                          <h3 class="name_cake">

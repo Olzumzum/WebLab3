@@ -51,3 +51,6 @@ update ItemProduct set product_name = 'Change value', product_description = 'Cha
 where item_product_id = 18;
 
 
+delete from Cake where item_product_id = 5;
+delete from ItemProduct where item_product_id = 5;
+
