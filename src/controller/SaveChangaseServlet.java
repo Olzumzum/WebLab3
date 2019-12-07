@@ -25,13 +25,15 @@ public class SaveChangaseServlet extends HttpServlet {
         int weightProduct = Integer.parseInt(req.getParameter("productWeight"));
         int priceProduct = Integer.parseInt(req.getParameter("productPrice"));
 
+        ItemProduct itemProduct = new ItemProduct(nameProduct, descriptionProduct,
+                null, weightProduct, priceProduct);
+
         /** по id получаем изменяемую запись */
         int idEditRecord = Integer.parseInt(req.getParameter("idProduct"));
         CakeList cakeList = new CakeList();
-        ItemProduct itemProduct = cakeList.getItemProductById(idEditRecord);
 
-
-
+        boolean succsessStatus = cakeList.saveChangsItem(idEditRecord, itemProduct);
+        req.setAttribute("succsessStatusConservation", succsessStatus);
 
     }
 }

@@ -70,6 +70,12 @@ public class CakeList extends ProductList implements WorkListProduct {
             "INNER JOIN ItemProduct IP on Cake.item_product_id = IP.item_product_id " +
             "where IP.item_product_id = ?;";
 
+    /** изменить запись по id */
+    private final String SQL_REQUEST_SAVE_CHANGES = "update ItemProduct set product_name = ?, " +
+            "product_description = ?, " +
+            "                       weight = ?, price = ? " +
+            "where item_product_id = ?;";
+
     /**
      * get all table items
      *
@@ -280,6 +286,7 @@ public class CakeList extends ProductList implements WorkListProduct {
         return idAssortment;
     }
 
+    /** вернуть запись по id */
     public ItemProduct getItemProductById(int idProduct){
         DbConnection db = new DbConnection();
         Connection connection = db.connect();
@@ -309,5 +316,33 @@ public class CakeList extends ProductList implements WorkListProduct {
         }
 
         return null;
+    }
+
+    /**сохранить изменения в элементе по id */
+    public boolean saveChangsItem(int idProduct, ItemProduct itemProduct){
+        DbConnection db = new DbConnection();
+        Connection connection = db.connect();
+
+        PreparedStatement statement;
+        ResultSet resultSet;
+        try{
+            statement = connection.prepareStatement(SQL_REQUEST_SAVE_CHANGES);
+            statement.setString(1, itemProduct.getmProductName());
+            statement.setString(2, itemProduct.getmProductDescription());
+            statement.setInt(3, itemProduct.getmWeight());
+            statement.setInt(4, itemProduct.getmPrice());
+            statement.setInt(5, idProduct);
+
+            statement.execute();
+
+            connection.close();
+            db.closeConnection();
+            return true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Не удалось изменить запись");
+            return false;
+        }
     }
 }

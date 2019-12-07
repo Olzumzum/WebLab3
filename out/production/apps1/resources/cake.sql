@@ -46,6 +46,8 @@ select assortment_cake_id from AssortmentCake
 where assortment_cake_name = 'Донаты';
 
 
-select * from
+update ItemProduct set product_name = 'Change value', product_description = 'Changes value',
+                       weight = 0, price = 0
+where item_product_id = 18;
 
 

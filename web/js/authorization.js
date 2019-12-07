@@ -22,8 +22,8 @@ function valid(form) {
 
          /* Здесь проверяем полученные данные */
         // if (email != userEmail || password != userPassword) {
-        console.log("negative");
-        $("#dialog").dialog("open");
+        //console.log("negative");
+        //$("#dialog").dialog("open");
         // }
     }
 };

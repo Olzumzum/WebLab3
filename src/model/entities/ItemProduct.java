@@ -14,14 +14,18 @@ public class ItemProduct implements Serializable {
     private int mWeight;
     private int mPrice;
 
-   /* public ItemProduct(String mProductName, String mProductDescription, byte[] mProductImage, int mWeight, int mPrice) {
+    public ItemProduct(){
+
+    }
+
+    public ItemProduct(String mProductName, String mProductDescription, byte[] mProductImage, int mWeight, int mPrice) {
         this.mProductName = mProductName;
         this.mProductDescription = mProductDescription;
         this.mProductImage = mProductImage;
         this.mWeight = mWeight;
         this.mPrice = mPrice;
     }
-*/
+
 
     public int getmIdProduct() {
         return mIdProduct;

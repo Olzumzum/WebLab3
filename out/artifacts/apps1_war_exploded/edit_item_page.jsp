@@ -8,6 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <script type="text/javascript" src="js/loaderMenu.js"></script>
+    <script type="text/javascript" src="edit_item_page.jsp"></script>
     <title>Title</title>
 </head>
 <body>
@@ -25,8 +27,8 @@
 <jsp:setProperty name="itemEditProduct" property="mProductName" value="<%= nameProdct%>"/>
 <jsp:setProperty name="itemEditProduct" property="mIdProduct" value="<%= idProduct%>"/>
 <jsp:setProperty name="itemEditProduct" property="mProductDescription" value="<%= descriptionProduct %>"/>
-<jsp:setProperty name="itemEditProduct" property="mWeight" value="<%= weightProduct%>" />
-<jsp:setProperty name="itemEditProduct" property="mPrice" value="<%= priceProduct%>" />
+<jsp:setProperty name="itemEditProduct" property="mWeight" value="<%= weightProduct%>"/>
+<jsp:setProperty name="itemEditProduct" property="mPrice" value="<%= priceProduct%>"/>
 
 <form id="insertProduct" class="insertProduct" action="SaveChangesServlet" method="post">
 
@@ -50,5 +52,21 @@
     <input type="submit" value="Редактировать продукт"
            onclick="verificationEnteredData(document.getElementById('insertProduct'))"/>
 </form>
+
+
+<!-- Диалог неверно введенных данных -->
+<form>
+    <div id="succsess_dialog" title="Заполнение данных продукции">
+        <p> Не все требуемые поля заполнены </p>
+    </div>
+</form>
+<!-- Диалог успеха сохранения -->
+<form>
+    <div id="succsess_save_dialog" title="Заполнение данных продукции">
+        <p> Изменения успешно сохранены </p>
+    </div>
+</form>
+
 </body>
+<script src="js/dialogOpeningSetting.js"></script>
 </html>

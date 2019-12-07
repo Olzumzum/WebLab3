@@ -3,12 +3,17 @@ $(document).ready(function () {
     $('#dialog').dialog({
         autoOpen: false
     });
-    /** Диалог об успешной регистрации */
+    /** Диалог об успехе по жизни */
     $('#succsess_dialog').dialog({
         autoOpen: false
     });
     /** Диалог о непройденной капче */
     $('#capcha_dialog').dialog({
+        autoOpen: false
+    });
+
+    /* успешное внесение изменений в запись */
+    $('#succsess_save_dialog').dialog({
         autoOpen: false
     });
 });
