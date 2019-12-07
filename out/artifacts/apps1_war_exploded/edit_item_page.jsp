@@ -54,7 +54,7 @@
            value="${itemEditProduct.mWeight}" required>
 
     <h3 class="subtitle"> Стоимость </h3>
-    <input id="productPrice" name="productPrice" class="insertField"
+    <input id="productPrice" name="productPrice" class="insertField" type=""
            value="${itemEditProduct.mPrice}" required>
     <input type="submit" value="Редактировать продукт"
            onclick="verificationEnteredData(document.getElementById('insertProduct'))"/>

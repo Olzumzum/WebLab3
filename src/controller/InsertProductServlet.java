@@ -26,6 +26,7 @@ public class InsertProductServlet  extends HttpServlet {
         /** By default, the weight and price of the product cannot be zero */
         int weightProduct = 0;
         int priceProduct = 0;
+        String assortmentName = null;
 
         /**geting product data from a form */
         nameProduct = req.getParameter("productName");
@@ -36,7 +37,15 @@ public class InsertProductServlet  extends HttpServlet {
         }catch (NumberFormatException ex){
             ex.printStackTrace();
             System.out.println("Введен неверный формат данных");
+            req.getRequestDispatcher("insert_page.jsp").forward(req, resp);
         }
+
+        assortmentName = req.getParameter("assort");
+        if(assortmentName.equals("Ассортимент")) {
+            System.out.println("Неверное значение поля ассортимент");
+            req.getRequestDispatcher("insert_page.jsp").forward(req, resp);
+        }
+
 
         /** if all required fields are filled */
         if((nameProduct != null) && (descriptionProduct != null) && (weightProduct != 0) && (priceProduct != 0)) {
@@ -48,10 +57,12 @@ public class InsertProductServlet  extends HttpServlet {
             itemProduct.setmPrice(priceProduct);
 
             CakeList cakeList = new CakeList();
-            cakeList.insertProductIntoList(itemProduct, "Донаты");
+            cakeList.insertProductIntoList(itemProduct, assortmentName);
         } else {
             System.out.println("Неверно введены данные");
+            req.getRequestDispatcher("insert_page.jsp").forward(req, resp);
         }
 
+        req.getRequestDispatcher("cake_page.jsp").forward(req, resp);
     }
 }

@@ -17,7 +17,7 @@
 <c:set var="roleRule" value="${roleRule}" />
 <c:if test="${roleRule == true}">
 <div>
-    <a href="insert_page.html"> Добавить новый товар </a>
+    <a href="insert_page.jsp"> Добавить новый товар </a>
 </div>
 </c:if>
 

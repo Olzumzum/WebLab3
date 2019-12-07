@@ -21,7 +21,7 @@
 <%
 
 %>
-<div class="submenu">
+<div>
     <h2 class="title_submenu">Ассортимент</h2>
     <ul><%
         AssortmentList assortmentList = new AssortmentList("AssortmentCake");
@@ -40,6 +40,7 @@
             <%
             }
             %>
+    </ul>
 </div>
 
 </body>
