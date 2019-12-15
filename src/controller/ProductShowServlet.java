@@ -28,49 +28,37 @@ public class ProductShowServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String searchCriterion = req.getParameter("searchCriterion");
-        String assortCriterion = req.getParameter("assort");
+        resp.setContentType("text/html; charset=UTF-8");
+        req.setCharacterEncoding("UTF-8");
+
+        List<ItemProduct> mCakeList = null;
+        String url = null;
+        /**listing and loading product lists */
+        CakeList cakeTable = new CakeList();
 
         HttpSession session = req.getSession();
-        List<ItemProduct> mCakeList = null;
+        String searchCriterion = req.getParameter("searchCriterion");
+        String assortCriterion = req.getParameter("assort");
+        //assortCriterion = "Донат";
 
 
-            /**listing and loading product lists */
-            CakeList cakeTable = new CakeList();
-            if ((assortCriterion == null) && (searchCriterion == null)) {
-                /** get list all products */
-                mCakeList = cakeTable.getAllCakes();
-                req.setAttribute("listCake", mCakeList);
-            } else {
-                /** search by two criteria */
-                if ((assortCriterion != null) && (searchCriterion != null)) {
-                    cakeTable.getCakesListSearchAndAssortment(searchCriterion, assortCriterion);
-                    req.setAttribute("listCake", mCakeList);
-                }
+        if (searchCriterion != null) {
+            mCakeList = cakeTable.getCakesListSearch(searchCriterion);
+            url = "cake_page.jsp?searchCriterion=" + req.getParameter("searchCriterion");
 
-                /** search by one criteria */
-                if (searchCriterion == null)
-                /** get list by assortment criterion */
-                    mCakeList = cakeTable.getCakesAssortmentCriterion(assortCriterion);
-                req.setAttribute("listCake", mCakeList);
-
-                if (assortCriterion == null) {
-                    mCakeList = cakeTable.getCakesListSearch(searchCriterion);
-                    req.setAttribute("listCake", mCakeList);
-                    String url = "cake_page.jsp?searchCriterion=" + req.getParameter("searchCriterion");
-
-
-                }
-            }
-
-
-            /** filling in session data */
-
-
-            /** getting user role */
-            session.setAttribute("roleRule", roleCheck(session));
         }
 
+        if(assortCriterion == "Донат"){
+            mCakeList = cakeTable.getCakesListSearch(searchCriterion);
+            req.setAttribute("listCake", mCakeList);
+            url = "cake_page.jsp?searchCriterion=" + assortCriterion;
+        }
+
+        req.setAttribute("listCake", mCakeList);
+        session.setAttribute("roleRule", roleCheck(session));
+
+        req.getRequestDispatcher(url).forward(req, resp);
+    }
 
 
     /**

@@ -25,10 +25,12 @@
 <body>
 <div id="mainMenu"></div>
 
+<%--
 <!-- Загрузка данных о продукции из БД -->
 <c:if test="${searchCriterion == null}">
 <jsp:include page="/ProductShowServlet"/>
 </c:if>
+--%>
 <!-- Контейнер для главного меню -->
 <div id="mailMenu"></div>
 
@@ -43,18 +45,20 @@
         <jsp:include page="Assortment.jsp"/>
     </div>
 
-    <!-- Ассортимент -->
-    <div id="content" class="content">
-        <h2 class="title_content">Торты и пирожные</h2>
-        <c:set var="i" value="${0}"/>
+    <form action="ProductShowServlet" method="post">
+        <!-- Ассортимент -->
+        <div id="content" class="content">
+            <h2 class="title_content">Торты и пирожные</h2>
+            <c:set var="i" value="${0}"/>
 
-        <%
-            List list = (List) request.getAttribute("listCake");
-            session.setAttribute("listProduct", list);
-        %>
-        <jsp:include page="ItemProductTable.jsp"/>
+            <%
+                List list = (List) request.getAttribute("listCake");
+                session.setAttribute("listProduct", list);
+            %>
+            <jsp:include page="ItemProductTable.jsp"/>
 
-    </div>
+        </div>
+    </form>
 </div>
 
 <!-- Контейнер для нижнего меню -->

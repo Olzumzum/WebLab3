@@ -16,13 +16,13 @@
     <title>Title</title>
 </head>
 <body>
-<!--Подменю -->
+<!--Подменю --></form>
 
 <%
 
 %>
 <div>
-    <h2 class="title_submenu">Ассортимент</h2>
+    <a href="cake_page.jsp?assort=<%="all"%>">Ассортимент</a>
     <ul><%
         AssortmentList assortmentList = new AssortmentList("AssortmentCake");
         String[] assortmentName = new String[assortmentList.getList().size()];
