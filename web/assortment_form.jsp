@@ -16,32 +16,28 @@
     <title>Title</title>
 </head>
 <body>
-<!--Подменю --></form>
 
-<%
-
-%>
+<!--Подменю -->
 <div>
-    <a href="cake_page.jsp?assort=<%="all"%>">Ассортимент</a>
+    <label id="title_assort" class="title_submenu">Ассортимент</label>
+
     <ul><%
         AssortmentList assortmentList = new AssortmentList("AssortmentCake");
         String[] assortmentName = new String[assortmentList.getList().size()];
         int i = 0;
         for (ItemAssortment item : (ArrayList<ItemAssortment>) assortmentList.getList()) {
             assortmentName[i] = item.getNameAssortment();
-        %>
+    %>
 
         <li id="submenu" class="subparagraph_submenu">
-            <a href="cake_page.jsp?assort=<%= item.getNameAssortment() %>" class="submenu_item">
-                <h3 id="assName"><%= assortmentName[i] %>
-                </h3>
-            </a>
+            <label id="assName" onclick="getSearchResults()" class="submenu_item"> <%= item.getNameAssortment() %></label>
         </li>
-            <%
+        <%
             }
-            %>
+        %>
     </ul>
 </div>
 
+<script type="text/javascript" src="js/searchList.js"></script>
 </body>
 </html>

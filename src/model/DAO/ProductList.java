@@ -1,5 +1,7 @@
 package model.DAO;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import model.entities.ItemProduct;
 
 import java.sql.ResultSet;
@@ -31,12 +33,12 @@ abstract class ProductList {
                 itemProduct.setmWeight(resultSet.getInt("weight"));
                 itemProduct.setmPrice(resultSet.getInt("price"));
 
+
                 mListProducts.add(itemProduct);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
 
         return mListProducts;
     }

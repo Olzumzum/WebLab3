@@ -23,6 +23,7 @@
     <title> Tasty House </title>
 </head>
 <body>
+<!-- Контейнер для главного меню -->
 <div id="mainMenu"></div>
 
 <%--
@@ -31,38 +32,37 @@
 <jsp:include page="/ProductShowServlet"/>
 </c:if>
 --%>
-<!-- Контейнер для главного меню -->
-<div id="mailMenu"></div>
 
 <!-- Поиск -->
 <div class="search">
-    <jsp:include page="search.jsp"/>
+    <jsp:include page="search_form.jsp"/>
 </div>
+
 
 <div class="container">
     <!--Подменю -->
     <div class="submenu">
-        <jsp:include page="Assortment.jsp"/>
+        <jsp:include page="assortment_form.jsp"/>
     </div>
 
-    <form action="ProductShowServlet" method="post">
-        <!-- Ассортимент -->
-        <div id="content" class="content">
-            <h2 class="title_content">Торты и пирожные</h2>
-            <c:set var="i" value="${0}"/>
+    <!-- Ассортимент -->
+    <div id="content" class="content">
+        <h2 class="title_content">Торты и пирожные</h2>
+        <c:set var="i" value="${0}"/>
 
-            <%
-                List list = (List) request.getAttribute("listCake");
-                session.setAttribute("listProduct", list);
-            %>
-            <jsp:include page="ItemProductTable.jsp"/>
+        <%
+            List list = (List) request.getAttribute("listCake");
+            session.setAttribute("listProduct", list);
+        %>
+        <input id="list" type="hidden" value="${listProduct}">
+        <jsp:include page="ItemProductTable.jsp"/>
 
-        </div>
-    </form>
+    </div>
 </div>
+
 
 <!-- Контейнер для нижнего меню -->
 <div id="footerMenu"></div>
-
+<script type="text/javascript" src="js/searchList.js"></script>
 </body>
 </html>

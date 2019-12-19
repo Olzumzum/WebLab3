@@ -1,5 +1,6 @@
 package controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import model.DAO.CakeList;
 import model.DAO.UserRoleList;
 import model.entities.ItemProduct;
@@ -28,36 +29,52 @@ public class ProductShowServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("Мы здесь драсте");
         resp.setContentType("text/html; charset=UTF-8");
         req.setCharacterEncoding("UTF-8");
 
-        List<ItemProduct> mCakeList = null;
-        String url = null;
-        /**listing and loading product lists */
-        CakeList cakeTable = new CakeList();
+//        List<ItemProduct> mCakeList = null;
+//        String url = null;
+//        /**listing and loading product lists */
+//        CakeList cakeTable = new CakeList();
+//
+//        HttpSession session = req.getSession();
+//        String searchCriterion = req.getParameter("searchCriterion");
+//        String assortCriterion = req.getParameter("assort");
+//
+//
+//        if ((assortCriterion == null) && (searchCriterion == null)) {
+//            /** get list all products */
+//            mCakeList = cakeTable.getAllCakes();
+//            req.setAttribute("listCake", mCakeList);
+//        } else {
+//            /** search by two criteria */
+//            if ((assortCriterion != null) && (searchCriterion != null)) {
+//                cakeTable.getCakesListSearchAndAssortment(searchCriterion, assortCriterion);
+//                req.setAttribute("listCake", mCakeList);
+//            }
+//            /** search by one criteria */
+//            if (searchCriterion == null)
+//                /** get list by assortment criterion */
+//                mCakeList = cakeTable.getCakesAssortmentCriterion(assortCriterion);
+//
+//            if (assortCriterion == null) {
+//                mCakeList = cakeTable.getCakesListSearch(searchCriterion);
+//                url = "cake_page.jsp?searchCriterion=" + req.getParameter("searchCriterion");
+//            }
+//        }
+//
+//        ObjectMapper objectMapper = new ObjectMapper();
+//        String listCake = objectMapper.writeValueAsString(mCakeList);
+//
+//        req.setAttribute("listCake", mCakeList);
+        resp.setHeader("Cache-Control", "no-cache");
+        //resp.getWriter().write(listCake);
+        resp.getWriter().write("Ответочка");
 
-        HttpSession session = req.getSession();
-        String searchCriterion = req.getParameter("searchCriterion");
-        String assortCriterion = req.getParameter("assort");
-        //assortCriterion = "Донат";
+      //  session.setAttribute("roleRule", roleCheck(session));
 
 
-        if (searchCriterion != null) {
-            mCakeList = cakeTable.getCakesListSearch(searchCriterion);
-            url = "cake_page.jsp?searchCriterion=" + req.getParameter("searchCriterion");
-
-        }
-
-        if(assortCriterion == "Донат"){
-            mCakeList = cakeTable.getCakesListSearch(searchCriterion);
-            req.setAttribute("listCake", mCakeList);
-            url = "cake_page.jsp?searchCriterion=" + assortCriterion;
-        }
-
-        req.setAttribute("listCake", mCakeList);
-        session.setAttribute("roleRule", roleCheck(session));
-
-        req.getRequestDispatcher(url).forward(req, resp);
     }
 
 

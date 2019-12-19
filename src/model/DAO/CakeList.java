@@ -2,6 +2,7 @@ package model.DAO;
 
 import model.DbConnection;
 import model.entities.ItemProduct;
+import netscape.javascript.JSObject;
 
 import java.sql.*;
 import java.util.List;
@@ -109,7 +110,6 @@ public class CakeList extends ProductList implements WorkListProduct {
             e.printStackTrace();
         }
 
-        
         return itemCakeList;
     }
 
@@ -376,4 +376,5 @@ public class CakeList extends ProductList implements WorkListProduct {
             return false;
         }
     }
+
 }
