@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<input id="searchfield"  name="searchfield" placeholder="Поиск" value="Содержимое"/>
+<input id="searchfield"  name="searchfield" placeholder="Поиск"/>
 <input id="search_button" type="submit" value="Поиск" onclick="getSearchResults(
     document.getElementById('searchfield').value)" />
 

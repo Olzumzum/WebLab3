@@ -3,27 +3,32 @@
  * и отправляет запрос сервлету на получение списка данных
  */
 function getSearchResults(element) {
+    var data;
 
     /** получаем строковое значение критерия поиска */
     var criterion = element;
+    console.log("Получено значение " + criterion);
 
     /** получаем значение поисковой строки */
     var searchCriterion = document.getElementById("searchfield").value;
 
+    /** сравниваем полученное значение со значением в поисковой строке
+     * и словом "Ассортимент" - ключевым словом для вывода всего списка
+     */
     if(!criterion.localeCompare(searchCriterion)) {
         console.log("Ищем по критерию поиска");
+        data = "searchCriterion=" + encodeURIComponent(criterion);
     } else {
         if(!criterion.localeCompare("Ассортимент")){
-            console.log("Выводим весь список")
+            console.log("Выводим весь список");
+            data = "assort=all";
         } else {
             console.log("Выводим по критерию ассортимента");
+            data = "assort=" +  encodeURIComponent(criterion);
         }
     }
 
-    // var
-    // var data = "searchCriterion=" + encodeURIComponent(searchCriterion);
-    // console.log("Получено значение " + document.getElementById("searchfield").value);
-    // sendData(data);
+    sendData(data);
 
 
 
