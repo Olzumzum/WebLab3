@@ -19,7 +19,8 @@
 
 <!--Подменю -->
 <div>
-    <label id="title_assort" class="title_submenu">Ассортимент</label>
+    <label id="title_assort" class="title_submenu" onclick="getSearchResults(
+        document.getElementById('title_assort').innerHTML)">Ассортимент</label>
 
     <ul><%
         AssortmentList assortmentList = new AssortmentList("AssortmentCake");
@@ -30,7 +31,8 @@
     %>
 
         <li id="submenu" class="subparagraph_submenu">
-            <label id="assName" onclick="getSearchResults()" class="submenu_item"> <%= item.getNameAssortment() %></label>
+            <label id="assName" onclick="getSearchResults(
+                document.getElementById('assName').innerHTML)" class="submenu_item"> <%= item.getNameAssortment() %></label>
         </li>
         <%
             }

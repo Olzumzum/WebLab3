@@ -2,12 +2,28 @@
  * Функция получает данные поля ввода критерия поиска 
  * и отправляет запрос сервлету на получение списка данных
  */
-function getSearchResults() {
+function getSearchResults(element) {
 
+    /** получаем строковое значение критерия поиска */
+    var criterion = element;
+
+    /** получаем значение поисковой строки */
     var searchCriterion = document.getElementById("searchfield").value;
-    var data = "searchCriterion=" + encodeURIComponent(searchCriterion);
-    console.log("Получено значение " + document.getElementById("searchfield").value);
-    sendData(data);
+
+    if(!criterion.localeCompare(searchCriterion)) {
+        console.log("Ищем по критерию поиска");
+    } else {
+        if(!criterion.localeCompare("Ассортимент")){
+            console.log("Выводим весь список")
+        } else {
+            console.log("Выводим по критерию ассортимента");
+        }
+    }
+
+    // var
+    // var data = "searchCriterion=" + encodeURIComponent(searchCriterion);
+    // console.log("Получено значение " + document.getElementById("searchfield").value);
+    // sendData(data);
 
 
 
