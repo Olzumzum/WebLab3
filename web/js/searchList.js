@@ -54,7 +54,7 @@ function sendData(data) {
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             console.log("Success " + xhr.responseText);
-            document.getElementById("searchfield").value = xhr.responseText;
+            //document.getElementById("searchfield").value = xhr.responseText;
             getListIntoJson(xhr);
         }
 

@@ -3,8 +3,10 @@
  * и отправляет запрос сервлету на получение списка данных
  */
 function getSearchResults(element) {
-    cleanTable();
     var data;
+
+    /** очистить таблицу от старых результатов */
+    cleanTable();
 
     /** получаем строковое значение критерия поиска */
     var criterion = element;
@@ -52,7 +54,7 @@ function sendData(data) {
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             console.log("Success " + xhr.responseText);
-            document.getElementById("searchfield").value = xhr.responseText;
+            //document.getElementById("searchfield").value = xhr.responseText;
             getListIntoJson(xhr);
         }
 
@@ -86,7 +88,9 @@ function getListIntoJson(xhr) {
     }
 }
 
-
+/**
+ * очистка динамической таблицы от старых результатов
+ */
 function cleanTable() {
     for (; document.getElementById('productTable').getElementsByTagName('tr').length > 1;) {
         document.getElementById('productTable').deleteRow(1);

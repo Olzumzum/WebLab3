@@ -31,8 +31,9 @@
     %>
 
         <li id="submenu" class="subparagraph_submenu">
-            <label id="assName" onclick="getSearchResults(
-                document.getElementById('assName').innerHTML)" class="submenu_item"> <%= item.getNameAssortment() %></label>
+            <label id="assName" onclick="getSearchResults('<%= item.getNameAssortment() %>')" class="submenu_item">
+                <%= item.getNameAssortment() %>
+            </label>
         </li>
         <%
             }

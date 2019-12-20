@@ -34,7 +34,7 @@ public class ProductShowServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
 
         List<ItemProduct> mCakeList = null;
-        String url = null;
+
         /**listing and loading product lists */
         CakeList cakeTable = new CakeList();
 
@@ -62,7 +62,7 @@ public class ProductShowServlet extends HttpServlet {
 
             if (assortCriterion == null) {
                 mCakeList = cakeTable.getCakesListSearch(searchCriterion);
-                url = "cake_page.jsp?searchCriterion=" + req.getParameter("searchCriterion");
+
             }
         }
 
