@@ -3,10 +3,7 @@ package model.DAO;
 import model.DbConnection;
 import model.entities.User;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 /**
  * Класс осуществляет работу с таблицей пользователей
@@ -18,6 +15,7 @@ public class UserTable implements WorkUserTable {
      * задаем id роли "user"
      */
     private final int ROLE_ID = 2;
+    private final String SQL_SEARCH_USER_EMAIL ="SELECT * from Users where email_user = ?";
 
     private String userRole;
 
@@ -91,6 +89,24 @@ public class UserTable implements WorkUserTable {
     }
 
     public boolean getUserEmail(String userRole){
+        DbConnection dbConnection = new DbConnection();
+        Connection connection = dbConnection.connect();
+
+        PreparedStatement statement;
+        ResultSet resultSet;
+
+        try{
+            statement = connection.prepareStatement(SQL_SEARCH_USER_EMAIL);
+            statement.setString(1, userRole);
+
+            resultSet = statement.executeQuery();
+
+            while (resultSet.next())
+                return false;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         return true;
     }

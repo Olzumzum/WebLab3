@@ -24,7 +24,10 @@
 
     <h1 class="title_enter">Регистация</h1>
     <h3 class="subtitle">e-mail</h3>
-    <input type="email" name="email" placeholder="Введите email" id="email" class="input_field" required>
+    <input type="email" name="email" placeholder="Введите email" id="email" class="input_field" required
+    onchange="checkUserEmail()">
+
+    <span id="message_of_email_valid" class="message_of_email_valid"> Пользователь с такой почтой уже существует</span>
 
     <h4 class="subtitle">пароль</h4>
     <input type="password" name="password" placeholder="Введите пароль" id="password" class="input_field" required>
@@ -83,4 +86,5 @@
     showExpression();
 </script>
 
+<script type="text/javascript" src="js/checkUserEmail.js"></script>
 </html>

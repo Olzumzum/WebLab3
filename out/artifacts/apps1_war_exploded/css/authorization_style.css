@@ -117,3 +117,7 @@ body {
     float: right;
 }
 
+.message_of_email_valid {
+    visibility: hidden;
+    color: red;
+}
