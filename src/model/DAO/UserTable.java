@@ -90,4 +90,8 @@ public class UserTable implements WorkUserTable {
         return userRole;
     }
 
+    public boolean getUserEmail(String userRole){
+
+        return true;
+    }
 }
