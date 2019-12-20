@@ -43,7 +43,7 @@ public class ProductShowServlet extends HttpServlet {
         String assortCriterion = req.getParameter("assort");
 
 
-        if ((assortCriterion == null) && (searchCriterion == null)) {
+        if (assortCriterion.equals("all")) {
             /** get list all products */
             mCakeList = cakeTable.getAllCakes();
             req.setAttribute("listCake", mCakeList);
@@ -55,7 +55,7 @@ public class ProductShowServlet extends HttpServlet {
             }
             /** search by one criteria */
             if (searchCriterion == null)
-                /** get list by assortment criterion */
+            /** get list by assortment criterion */
                 mCakeList = cakeTable.getCakesAssortmentCriterion(assortCriterion);
 
             if (assortCriterion == null) {

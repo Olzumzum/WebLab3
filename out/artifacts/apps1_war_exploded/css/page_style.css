@@ -12,7 +12,6 @@ body {
 }
 
 .clearfix {
-    content: '';
     display: table;
     width: 100%;
     clear: both;
@@ -47,31 +46,24 @@ body {
 }
 
 /** Стиль каждого элемента продукции */
-.item_cake {
-    display: table-cell;
+td, th {
+    padding: 10px;
 }
 
-.content_item_cake {
-
-    margin: 20px;
-    padding: 20px;
-    padding-bottom: 80px;
-    border: solid 10px #e6e6e6;
-
+table {
+    text-align: right;
+    border-collapse: collapse;
 }
 
-.name_cake {
-    padding-left: 8px;
-    display: table;
+td {
+    border: 1px solid black;
+    border-radius:  5px;
 }
 
-.price {
-    padding-left: 40px;
-    float: left;
+tr:nth-of-type(odd) {
+    background-color: bisque;
 }
-
-.weight {
-    padding-right: 40px;
-    float: right;
+tr:nth-of-type(even) {
+    background-color: white;
 }
 

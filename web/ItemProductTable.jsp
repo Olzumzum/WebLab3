@@ -29,59 +29,26 @@
     </div>
 </c:if>
 
-<table>
-    <tr>
-        <!-- Counter for the presentation of products line by line: in one line -->
-        <c:set var="i" value="${0}"/>
+<table id="productTable">
+    <colgroup>
+        <col id="product_name"/>
+        <col id="product_description"/>
+        <col id="weight"/>
+        <col id="price"/>
+    </colgroup>
 
-        <c:forEach items="${listProduct}" var="item">
-            <!-- If this is 0 element open container line -->
-            <c:if test="${i == 0}">
-                <div class="row">
-            </c:if>
-            <div class="item_cake">
-                <div class="content_item_cake">
-                    <!-- Admin Feature -->
-                    <c:if test="${roleRule == true}">
-                        <a href="edit_item_page.jsp?idProduct=${item.mIdProduct}"> Редактировать </a>
-                        <a href="delete_page.jsp?idProduct=${item.mIdProduct}"> Удалить </a>
-                    </c:if>
+    <thread>
+        <tr>
+            <th scope="col"> Название продукта</th>
+            <th scope="col"> Описание продукта</th>
+            <th scope="col"> Вес</th>
+            <th scope="col"> Цена</th>
+        </tr>
+    </thread>
 
-                    <h3 class="name_cake">
-                        <c:out value="${item.mProductName}"/>
-                    </h3>
-                    <h4>
-                        <c:out value="${item.mProductDescription}"/>
-                    </h4>
+    <tbody>
 
-                    <h4 class="price">
-                        <c:out value="${item.mWeight}"/> гр.
-                    </h4>
-
-                    <h4 class="weight">
-                        <c:out value="${item.mPrice}"/> руб.
-                    </h4>
-                </div>
-            </div>
-
-            <c:choose>
-                <%-- If the item is the last in the line (i == 1)
-                then close the block --%>
-                <c:when test="${i == 1}">
-                    </div>
-                    <c:set var="i" value="${0}"/>
-                </c:when>
-
-                <%-- If the item is not the last in the line (i! = 1), close the block --%>
-                <c:otherwise>
-                    <c:set var="i" value="${i+1}"/>
-                </c:otherwise>
-            </c:choose>
-
-        </c:forEach>
-
-    </tr>
-
+    </tbody>
 </table>
 </body>
 </html>
