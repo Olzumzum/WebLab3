@@ -43,16 +43,18 @@ public class ProductShowServlet extends HttpServlet {
         String assortCriterion = req.getParameter("assort");
 
 
-        if (assortCriterion.equals("all")) {
+        if ( (assortCriterion != null) && (assortCriterion.equals("all")) ) {
             /** get list all products */
             mCakeList = cakeTable.getAllCakes();
             req.setAttribute("listCake", mCakeList);
         } else {
             /** search by two criteria */
-            if ((assortCriterion != null) && (searchCriterion != null)) {
+           /* if ((assortCriterion != null) && (searchCriterion != null)) {
                 cakeTable.getCakesListSearchAndAssortment(searchCriterion, assortCriterion);
                 req.setAttribute("listCake", mCakeList);
             }
+            */
+
             /** search by one criteria */
             if (searchCriterion == null)
             /** get list by assortment criterion */
@@ -64,10 +66,15 @@ public class ProductShowServlet extends HttpServlet {
             }
         }
 
+        /** превращаем полученный список в объект JSON */
         ObjectMapper objectMapper = new ObjectMapper();
         String listCake = objectMapper.writeValueAsString(mCakeList);
 
         req.setAttribute("listCake", mCakeList);
+
+        /** записываем данные о списке в ответ от сервера,
+         * чтобы получить изменения в ajax
+         */
         resp.setHeader("Cache-Control", "no-cache");
         resp.getWriter().write(listCake);
 //        resp.getWriter().write("Ответочка");

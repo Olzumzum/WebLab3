@@ -3,6 +3,7 @@
  * и отправляет запрос сервлету на получение списка данных
  */
 function getSearchResults(element) {
+    cleanTable();
     var data;
 
     /** получаем строковое значение критерия поиска */
@@ -85,4 +86,11 @@ function getListIntoJson(xhr) {
     }
 }
 
+
+function cleanTable() {
+    for (; document.getElementById('productTable').getElementsByTagName('tr').length > 1;) {
+        document.getElementById('productTable').deleteRow(1);
+    }
+
+}
 

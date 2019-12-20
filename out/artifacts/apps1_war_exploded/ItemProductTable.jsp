@@ -22,13 +22,7 @@
 </head>
 <body>
 
-<c:set var="roleRule" value="${roleRule}"/>
-<c:if test="${roleRule == true}">
-    <div>
-        <a href="insert_page.jsp"> Добавить новый товар </a>
-    </div>
-</c:if>
-
+<!-- Вывод таблицы продукции -->
 <table id="productTable">
     <colgroup>
         <col id="product_name"/>

@@ -5,6 +5,9 @@
 function getSearchResults(element) {
     var data;
 
+    /** очистить таблицу от старых результатов */
+    cleanTable();
+
     /** получаем строковое значение критерия поиска */
     var criterion = element;
     console.log("Получено значение " + criterion);
@@ -85,4 +88,13 @@ function getListIntoJson(xhr) {
     }
 }
 
+/**
+ * очистка динамической таблицы от старых результатов
+ */
+function cleanTable() {
+    for (; document.getElementById('productTable').getElementsByTagName('tr').length > 1;) {
+        document.getElementById('productTable').deleteRow(1);
+    }
+
+}
 

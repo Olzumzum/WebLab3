@@ -36,7 +36,7 @@ public class CakeList extends ProductList implements WorkListProduct {
             "from Cake " +
             "INNER JOIN AssortmentCake AC on Cake.assortment_cake_id = AC.assortment_cake_id " +
             "JOIN ItemProduct IP on Cake.item_product_id = IP.item_product_id " +
-            "where product_name = ?;";
+            "where UPPER(product_name) = UPPER(?);";
 
     /**
      * get a list by search criteria and assortment
